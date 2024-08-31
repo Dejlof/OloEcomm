@@ -1,0 +1,6 @@
+@OloEcomm_HostAddress = http://localhost:5014
+
+GET {{OloEcomm_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
