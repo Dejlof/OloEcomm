@@ -10,7 +10,7 @@ namespace OloEcomm.Dtos.Product
         [Required]
         public string Name { get; set; } = string.Empty;
 
-        [MaxLength(100, ErrorMessage = "Description can not be more than 20 characters")]
+        [MaxLength(100, ErrorMessage = "Description can not be more than 100 characters")]
         [Required]
         public string Description { get; set; } = string.Empty;
 

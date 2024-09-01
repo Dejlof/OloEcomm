@@ -21,7 +21,7 @@ namespace OloEcomm.Repository
 
         }
 
-        public async Task<Product> DeleteProductAsync(long id)
+        public async Task<Product> DeleteProductAsync(int id)
         {
             var productModel = await _context.Products.Include(s => s.ProductImages)
             .Include(s => s.Reviews).FirstOrDefaultAsync(x => x.Id == id);
@@ -42,7 +42,7 @@ namespace OloEcomm.Repository
              .Include(s=> s.Reviews).ToListAsync();
         }
 
-        public async Task<Product> GetById(long id)
+        public async Task<Product> GetById(int id)
         {
             var product = await _context.Products.Include(s => s.ProductImages)
              .Include(s => s.Reviews).FirstOrDefaultAsync(x=>x.Id == id);
@@ -54,7 +54,12 @@ namespace OloEcomm.Repository
             return product;
         }
 
-        public async Task<Product> UpdateProductAsync(long id, UpdateProductDto productDto)
+        public Task<bool> productExists(int id)
+        {
+            return _context.Products.AnyAsync(x => x.Id == id);
+        }
+
+        public async Task<Product> UpdateProductAsync(int id, Product productModel)
         {
             var existingProduct = await _context.Products.Include(s => s.ProductImages)
               .Include(s => s.Reviews).FirstOrDefaultAsync(x => x.Id == id);
@@ -64,9 +69,9 @@ namespace OloEcomm.Repository
                 return null;
             }
 
-            existingProduct.Name = productDto.Name;
-            existingProduct.Description = productDto.Description;
-            existingProduct.Price = productDto.Price;
+            existingProduct.Name = productModel.Name;
+            existingProduct.Description = productModel.Description;
+            existingProduct.Price = productModel.Price;
 
             await _context.SaveChangesAsync();
             return existingProduct;

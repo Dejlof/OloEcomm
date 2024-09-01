@@ -31,7 +31,7 @@ namespace OloEcomm.Mappers
 
         }
 
-        public static Product UpdateProductDto(this UpdateProductDto productDto)
+        public static Product ToUpdateProductDto(this UpdateProductDto productDto)
         {
             return new Product
             {

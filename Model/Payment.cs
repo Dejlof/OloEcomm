@@ -1,5 +1,6 @@
 ﻿using OloEcomm.Data.Enum;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 
 namespace OloEcomm.Model
 {
@@ -14,7 +15,7 @@ namespace OloEcomm.Model
         public PaymentStatus PaymentStatus { get; set; } // e.g., Paid, Pending
         public DateTime PaymentDate { get; set; } = DateTime.Now;
 
-        public string Reference { get; set; }
+        public string Reference { get; set; } = string.Empty;
 
     }
 }

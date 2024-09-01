@@ -13,6 +13,7 @@ namespace OloEcomm.Mappers
                 Id = category.Id,
                 Name = category.Name,
                 Description = category.Description,
+                Products = category.Products.Select(c=>c.ToProductDto()).ToList(),
 
             };
         }

@@ -7,12 +7,14 @@ namespace OloEcomm.Interface
     {
         Task<List<Product>> GetAllProductsAsync();
 
-        Task<Product> GetById (long id);
+        Task<Product> GetById (int id);
 
         Task<Product> CreateProductAsync (Product product); 
 
-        Task<Product> UpdateProductAsync(long id, UpdateProductDto productDto);
+        Task<Product> UpdateProductAsync(int id, Product productModel);
 
-        Task<Product> DeleteProductAsync (long id);
+        Task<Product> DeleteProductAsync (int id);
+
+       Task<bool> productExists (int id);
     }
 }

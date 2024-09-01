@@ -14,6 +14,12 @@ namespace OloEcomm.Repository
         {
             _context = context;
         }
+
+        public Task<bool> categoryExists(int id)
+        {
+            return _context.Categories.AnyAsync(c => c.Id == id);   
+        }
+
         public async Task<Category> CreateCategoryAsync(Category categoryModel)
         {
             await _context.Categories.AddAsync(categoryModel);

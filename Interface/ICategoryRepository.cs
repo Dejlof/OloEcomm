@@ -14,5 +14,7 @@ namespace OloEcomm.Interface
         Task<Category?> UpdateCategoryAsync (int id, UpdateCategoryDto categoryDto);
 
         Task <Category?> DeleteCategoryAsync (int id);
+
+        Task<bool> categoryExists(int id);
     }
 }
