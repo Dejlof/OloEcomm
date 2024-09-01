@@ -42,9 +42,13 @@ namespace OloEcomm.Repository
 
         public async Task<Category?> GetByIdAsync(int id)
         {
-          return await _context.Categories.Include(s=>s.Products).FirstOrDefaultAsync(x=>x.Id==id);
+          var category = await _context.Categories.Include(s=>s.Products).FirstOrDefaultAsync(x=>x.Id==id);
+            if (category == null) 
+            {
+                return null;
+            }
             
-
+            return category;
         }
 
         public async Task<Category?> UpdateCategoryAsync(int id, UpdateCategoryDto categoryDto)

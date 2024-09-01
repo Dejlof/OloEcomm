@@ -5,9 +5,9 @@ namespace OloEcomm.Model
 {
     public class Product
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public long Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; } = decimal.Zero;
         public int CategoryId { get; set; }
