@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using OloEcomm.Dtos.Review;
+
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OloEcomm.Dtos.Product
 {
@@ -12,5 +14,7 @@ namespace OloEcomm.Dtos.Product
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public string CreatedBy { get; set; } = string.Empty;
         public int? CategoryId { get; set; }
+
+       public List<ReviewDto>? Reviews { get; set; }
     }
 }

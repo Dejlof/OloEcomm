@@ -55,7 +55,7 @@ namespace OloEcomm.Controllers
             }
             if (!await _categoryRepository.categoryExists(categoryId))
             {
-                return BadRequest("Category does not exist");
+                return BadRequest("Product does not exist");
             }
             var productModel = productDto.CreateProductDto(categoryId);
 
