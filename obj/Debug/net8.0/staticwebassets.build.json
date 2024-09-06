@@ -1,11 +1,58 @@
 {
   "Version": 1,
-  "Hash": "Gjr1a4iiwGkS/Vg6lH9uh9car5Qi4ci25zd7tjBHM4U=",
+  "Hash": "1TZ65byE2kt4hBjGo1R8wIBGCZ0Vks9TIFd03OVErDg=",
   "Source": "OloEcomm",
   "BasePath": "_content/OloEcomm",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "OloEcomm\\wwwroot",
+      "Source": "OloEcomm",
+      "ContentRoot": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\wwwroot\\",
+      "BasePath": "_content/OloEcomm",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\wwwroot\\images\\309e245f-470c-40f7-b466-c3f87fad8f82.jpg",
+      "SourceId": "OloEcomm",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\wwwroot\\",
+      "BasePath": "_content/OloEcomm",
+      "RelativePath": "images/309e245f-470c-40f7-b466-c3f87fad8f82.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\309e245f-470c-40f7-b466-c3f87fad8f82.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\wwwroot\\images\\769f78e4-110f-4895-8506-e319f94b89e6.jpg",
+      "SourceId": "OloEcomm",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\wwwroot\\",
+      "BasePath": "_content/OloEcomm",
+      "RelativePath": "images/769f78e4-110f-4895-8506-e319f94b89e6.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\769f78e4-110f-4895-8506-e319f94b89e6.jpg"
+    }
+  ]
 }

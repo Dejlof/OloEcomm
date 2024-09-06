@@ -1,7 +1,11 @@
+
 using Microsoft.EntityFrameworkCore;
+
 using OloEcomm.Data;
 using OloEcomm.Interface;
 using OloEcomm.Repository;
+using OloEcomm.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,10 +18,23 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IProductReposity,ProductRepository>();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+builder.Services.AddScoped<IProductImageRepository, ProductImageRepository>();  
+builder.Services.AddScoped<IFileService, FileService>();
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
 });
 
 var app = builder.Build();

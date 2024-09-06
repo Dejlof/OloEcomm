@@ -15,7 +15,9 @@ namespace OloEcomm.Mappers
                 Price = productModel.Price,
                 CreatedDate = productModel.CreatedDate,
                 CategoryId = productModel.CategoryId,
-                Reviews = productModel.Reviews.Select(s => s.ToReviewDto()).ToList()
+                Reviews = productModel.Reviews.Select(s => s.ToReviewDto()).ToList(),
+                ProductImages = productModel.ProductImages.Select(c=>c.ToProductImageDto()).ToList(),
+                
             };
 
         }

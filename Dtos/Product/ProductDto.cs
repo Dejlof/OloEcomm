@@ -1,4 +1,5 @@
-﻿using OloEcomm.Dtos.Review;
+﻿using OloEcomm.Dtos.ProductImage;
+using OloEcomm.Dtos.Review;
 
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -16,5 +17,6 @@ namespace OloEcomm.Dtos.Product
         public int? CategoryId { get; set; }
 
        public List<ReviewDto>? Reviews { get; set; }
+        public List<ProductImageDto>? ProductImages { get; set; }
     }
 }

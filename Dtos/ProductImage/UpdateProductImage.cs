@@ -5,6 +5,6 @@ namespace OloEcomm.Dtos.ProductImage
     public class UpdateProductImage
     {
         [Required(ErrorMessage = "Image file is required.")]
-        public IFormFile? File { get; set; }
+        public IFormFile? imageFile { get; set; }
     }
 }
