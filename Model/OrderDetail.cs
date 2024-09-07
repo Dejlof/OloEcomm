@@ -12,7 +12,9 @@ namespace OloEcomm.Model
         [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
-       
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal TotalPrice { get; set; } 
+
         public int OrderId { get; set; }
        
         public Order Order { get; set; }

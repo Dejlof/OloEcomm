@@ -87,7 +87,7 @@ namespace OloEcomm.Controllers
             return CreatedAtAction(nameof(GetById), new { Id = productId }, createdImage.ToProductImageDto());
         }
 
-        [HttpPut("{id:int}/update")]
+        [HttpPut("{id:int}/update ")]
         public async Task<IActionResult> UpdateImage([FromRoute] int id, [FromForm] UpdateProductImage productImageDto)
         {
             if (!ModelState.IsValid)
