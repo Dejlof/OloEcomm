@@ -20,6 +20,7 @@ builder.Services.AddScoped<IProductReposity,ProductRepository>();
 builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IProductImageRepository, ProductImageRepository>();  
 builder.Services.AddScoped<IFileService, FileService>();
+builder.Services.AddScoped<IAddressRepository, AddressRepository>();
 
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
