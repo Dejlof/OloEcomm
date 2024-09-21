@@ -12,7 +12,9 @@ namespace OloEcomm.Mappers
                 Id = productModel.Id,
                 Name = productModel.Name,
                 Description = productModel.Description,
+                QuantityInStock = productModel.QuantityInStock,
                 Price = productModel.Price,
+                DiscountPrice = productModel.DiscountPrice,
                 CreatedDate = productModel.CreatedDate,
                 CategoryId = productModel.CategoryId,
                 Reviews = productModel.Reviews.Select(s => s.ToReviewDto()).ToList(),
@@ -28,7 +30,9 @@ namespace OloEcomm.Mappers
             {
                 Name = productDto.Name,
                 Description = productDto.Description,
+                QuantityInStock= productDto.QuantityInStock,
                 Price = productDto.Price,
+                DiscountPrice = productDto.DiscountPrice,
                 CategoryId = categoryId,
             };
 
@@ -40,7 +44,9 @@ namespace OloEcomm.Mappers
             {
                 Name = productDto.Name,
                 Description = productDto.Description,
-                Price = productDto.Price
+                QuantityInStock = productDto.QuantityInStock,
+                Price = productDto.Price,
+                DiscountPrice = productDto.DiscountPrice,
             };
        } 
     }

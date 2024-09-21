@@ -71,7 +71,10 @@ namespace OloEcomm.Repository
 
             existingProduct.Name = productModel.Name;
             existingProduct.Description = productModel.Description;
+            existingProduct.Category = productModel.Category;
+            existingProduct.QuantityInStock = productModel.QuantityInStock;
             existingProduct.Price = productModel.Price;
+            existingProduct.DiscountPrice = productModel.DiscountPrice; 
 
             await _context.SaveChangesAsync();
             return existingProduct;
