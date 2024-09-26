@@ -21,6 +21,7 @@ builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
 builder.Services.AddScoped<IProductImageRepository, ProductImageRepository>();  
 builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+builder.Services.AddScoped<IWishlistRepository, WishlistRepository>();
 
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

@@ -1,9 +1,11 @@
 ﻿namespace OloEcomm.Dtos.Wishlist
 {
-    public class WishlistDto
+    public class WishListDto
     {
         public int Id { get; set; }
         public int ProductId { get; set; }
+
+    
 
         public string User { get; set; } = string.Empty;
 
