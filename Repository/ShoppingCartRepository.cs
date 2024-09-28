@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OloEcomm.Data;
+using OloEcomm.Dtos.Cart;
 using OloEcomm.Interface;
 using OloEcomm.Model;
 
@@ -8,25 +9,31 @@ namespace OloEcomm.Repository
     public class ShoppingCartRepository : IShoppingCartRepository
     {
         private readonly ApplicationDbContext _context;
-        public ShoppingCartRepository(ApplicationDbContext context) 
+        public ShoppingCartRepository(ApplicationDbContext context)
         {
-        _context = context;
-        } 
-        public async Task<CartItem> AddToCartAsync(CartItem cartItem, int productId, int quantity)
+            _context = context;
+        }
+        public async Task<CartItem> AddToCartAsync(int productId, int quantity)
         {
+            var product = await _context.Products.FindAsync(productId);
+            if (product == null)
+            {
+                throw new Exception($"Product with ID {productId} does not exist.");
+            }
+
             var existingCartItem = await _context.CartItems.FirstOrDefaultAsync(x => x.ProductId == productId);
 
-            if (existingCartItem != null) 
+            if (existingCartItem != null)
             {
-                cartItem.Quantity += quantity;
+                existingCartItem.Quantity += quantity;
             }
             else
             {
                 existingCartItem = new CartItem
                 {
                     ProductId = productId,
-                    Quantity = quantity,
-                    ShoppingCartId = cartItem.ShoppingCartId 
+
+
                 };
 
                 await _context.CartItems.AddAsync(existingCartItem);
@@ -38,24 +45,24 @@ namespace OloEcomm.Repository
 
         }
 
-        public async  Task<CartItem> ClearCartAsync()
+        public async Task<CartItem> ClearCartAsync()
         {
             _context.CartItems.RemoveRange(_context.CartItems);
 
-           
+
             await _context.SaveChangesAsync();
 
             return null;
         }
 
-        public async Task<List<ShoppingCart>> GetCartsAsync()
+        public async Task<List<CartItem>> GetCartsAsync()
         {
-            return await _context.ShoppingCarts.Include(s => s.CartItems).ToListAsync();    
+            return await _context.CartItems.ToListAsync();
         }
 
-        public async Task<CartItem> GetProductCartIdAsync(int id)
+        public async Task<CartItem> GetProductCartIdAsync(int productId)
         {
-            var cartItem = await _context.CartItems.FirstOrDefaultAsync(c => c.Id == id);
+            var cartItem = await _context.CartItems.FirstOrDefaultAsync(c => c.ProductId == productId);
             if (cartItem == null)
             {
                 return null;
@@ -63,9 +70,9 @@ namespace OloEcomm.Repository
             return cartItem;
         }
 
-        public async Task<CartItem> RemovefromCartAsync(int id)
+        public async Task<CartItem> RemovefromCartAsync(int productId)
         {
-            var cartItem = await _context.CartItems.FirstOrDefaultAsync(c => c.Id == id);
+            var cartItem = await _context.CartItems.FirstOrDefaultAsync(c => c.ProductId == productId);
             if (cartItem == null)
             {
                 return null;
@@ -73,6 +80,20 @@ namespace OloEcomm.Repository
             _context.CartItems.Remove(cartItem);
             await _context.SaveChangesAsync();
             return cartItem;
+        }
+
+        public async Task<CartItem> UpdateCartAsync(int productId, CartItem cartItem)
+        {
+            var existingCartItem = await _context.CartItems.FirstOrDefaultAsync(c => c.ProductId == productId);
+            if (existingCartItem == null)
+            {
+                return null;
+            }
+
+            existingCartItem.Quantity = cartItem.Quantity;
+
+            await _context.SaveChangesAsync();
+            return existingCartItem;
         }
     }
 }

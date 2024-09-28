@@ -5,6 +5,6 @@ namespace OloEcomm.Dtos.Cart
     public class CreateCartItemDto
     {
         [Required]
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
     }
 }

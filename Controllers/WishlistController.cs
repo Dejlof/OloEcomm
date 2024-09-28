@@ -59,7 +59,6 @@ namespace OloEcomm.Controllers
 
             if (!await _productReposity.productExists(productId))
             {
-                Console.WriteLine($"Product with ID {productId} does not exist.");
                 return BadRequest("Product does not exist");
                
             }
