@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OloEcomm.Data;
 
@@ -11,9 +12,11 @@ using OloEcomm.Data;
 namespace OloEcomm.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241001134603_AddAdmin")]
+    partial class AddAdmin
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -158,7 +161,7 @@ namespace OloEcomm.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "2",
+                            UserId = "1",
                             RoleId = "1"
                         });
                 });
@@ -548,22 +551,22 @@ namespace OloEcomm.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2",
+                            Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "22c2cbe6-55c8-43d8-b437-e54717f866ca",
-                            Email = "admin@gmail.com",
+                            ConcurrencyStamp = "5d8f58df-5c12-49db-9967-f7e80da255ed",
+                            Email = "dejlof@example.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             LastName = "User",
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@GMAIL.COM",
-                            NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGXKaAxp2OCL/XQE3qkm3V1lm/VNyoJ0xCFFh7gEctkunU1aTTbh1aOdtRvNRwThQw==",
-                            PhoneNumber = "133-476-7890",
+                            NormalizedEmail = "DEJLOF@EXAMPLE.COM",
+                            NormalizedUserName = "DEJLOF@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDvPdw11ZUC7ZZEwgXpmj8dKlGrnD36UAgAQ0miwf++pAxho/mFXAL0SctS1w9tw/g==",
+                            PhoneNumber = "123-456-7890",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "00000000-0000-0000-0000-000000000000",
                             TwoFactorEnabled = false,
-                            UserName = "admin@gmail.com"
+                            UserName = "dejlof@example.com"
                         });
                 });
 

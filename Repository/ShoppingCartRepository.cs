@@ -33,7 +33,6 @@ namespace OloEcomm.Repository
                 {
                     ProductId = productId,
 
-
                 };
 
                 await _context.CartItems.AddAsync(existingCartItem);

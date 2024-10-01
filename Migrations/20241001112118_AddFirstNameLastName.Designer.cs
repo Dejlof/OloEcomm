@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OloEcomm.Data;
 
@@ -11,9 +12,11 @@ using OloEcomm.Data;
 namespace OloEcomm.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241001112118_AddFirstNameLastName")]
+    partial class AddFirstNameLastName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,26 +50,6 @@ namespace OloEcomm.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
-                        },
-                        new
-                        {
-                            Id = "2",
-                            Name = "Vendor",
-                            NormalizedName = "VENDOR"
-                        },
-                        new
-                        {
-                            Id = "3",
-                            Name = "Buyer",
-                            NormalizedName = "BUYER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -154,13 +137,6 @@ namespace OloEcomm.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "2",
-                            RoleId = "1"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -544,27 +520,6 @@ namespace OloEcomm.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "2",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "22c2cbe6-55c8-43d8-b437-e54717f866ca",
-                            Email = "admin@gmail.com",
-                            EmailConfirmed = true,
-                            FirstName = "Admin",
-                            LastName = "User",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@GMAIL.COM",
-                            NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEGXKaAxp2OCL/XQE3qkm3V1lm/VNyoJ0xCFFh7gEctkunU1aTTbh1aOdtRvNRwThQw==",
-                            PhoneNumber = "133-476-7890",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
-                            TwoFactorEnabled = false,
-                            UserName = "admin@gmail.com"
-                        });
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Wishlist", b =>

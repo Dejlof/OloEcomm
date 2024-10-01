@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using OloEcomm.Model;
 
 namespace OloEcomm.Data
 {
-    public class ApplicationDbContext:DbContext
+    public class ApplicationDbContext:IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions dbContextOptions):base(dbContextOptions) 
         {
@@ -24,5 +26,62 @@ namespace OloEcomm.Data
         public DbSet<Payment> Payments { get; set; }
 
         public DbSet<Address> Addresses { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+
+            List<IdentityRole> roles = new List<IdentityRole>
+            {
+
+                new IdentityRole
+                {
+                    Id ="1",
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
+                },
+
+                new IdentityRole
+                {
+                    Id ="2",
+                    Name ="Vendor",
+                    NormalizedName = "VENDOR"
+                },
+
+                new IdentityRole
+                {
+                    Id="3",
+                    Name ="Buyer",
+                    NormalizedName = "BUYER"
+                }
+            };
+
+            var admin = new User
+            {
+                Id = "2",
+                UserName = "admin@gmail.com",
+                Email = "admin@gmail.com",
+                NormalizedUserName = "ADMIN@GMAIL.COM",
+                NormalizedEmail = "ADMIN@GMAIL.COM",
+                FirstName = "Admin", 
+                LastName = "User",     
+                EmailConfirmed = true,
+                PasswordHash = new PasswordHasher<User>().HashPassword(null, "YourPassword123!"),
+                PhoneNumber = "133-476-7890",
+                SecurityStamp = new Guid().ToString("D")
+            };
+
+           builder.Entity<IdentityRole>().HasData(roles);
+            builder.Entity<User>().HasData(admin);
+
+            var adminUserRole = new IdentityUserRole<string>
+            {
+                RoleId = "1",
+                UserId = "2",
+            };
+
+        builder.Entity<IdentityUserRole<string>>().HasData(adminUserRole);
+        }
     }
 }
