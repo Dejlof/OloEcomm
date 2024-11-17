@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OloEcomm.Data.Enum;
 using OloEcomm.Dtos.Account;
+using OloEcomm.Interface;
 using OloEcomm.Model;
+using System.ComponentModel.DataAnnotations;
 
 namespace OloEcomm.Controllers
 {
@@ -15,10 +17,12 @@ namespace OloEcomm.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager)
+        private readonly ITokenService _tokenService;
+        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, ITokenService tokenService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
+            _tokenService = tokenService;
         }
 
         [HttpPost("Register")]
@@ -75,13 +79,15 @@ namespace OloEcomm.Controllers
                     }
                     else
                     {
-                        return StatusCode(500, assignRole.Errors);
+                        var errorMessages = string.Join(", ", assignRole.Errors.Select(e => e.Description));
+                        return StatusCode(500, $"Role assignment failed: {errorMessages}");
                     }
 
                 }
                 else
                 {
-                    return StatusCode(500, result.Errors);
+                    var errorMessages = string.Join(", ", result.Errors.Select(e => e.Description));
+                    return StatusCode(500, $"Role assignment failed: {errorMessages}");
                 }
             }
             catch (Exception ex) 
@@ -120,6 +126,43 @@ namespace OloEcomm.Controllers
             {
                 return Ok(false);
             }
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var user = await _userManager.FindByNameAsync(loginDto.Login);
+
+            if (user == null && new EmailAddressAttribute().IsValid(loginDto.Login))
+            {
+                user = await _userManager.FindByEmailAsync(loginDto.Login);
+            }
+
+            if (user == null && new PhoneAttribute().IsValid(loginDto.Login))
+            {
+                user = await _userManager.Users.FirstOrDefaultAsync(u => u.PhoneNumber == loginDto.Login);
+            }
+
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            var verifiedUser = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+
+            if (!verifiedUser.Succeeded)
+            {
+                return Unauthorized("Username/Password incorrect");
+            }
+
+            var Token = await _tokenService.CreateToken(user);
+
+            return Ok(Token);
         }
     }
 }
