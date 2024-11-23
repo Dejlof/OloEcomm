@@ -11,6 +11,10 @@ namespace OloEcomm.Model
         [Required]
         public string? LastName { get; set; }
 
+        public string? RefreshToken { get; set; }
+
+        public DateTime? RefreshTokenExpiryTime { get; set; }
+
         public ICollection<Address> Address { get; set; } = new List<Address>();
 
         public ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
