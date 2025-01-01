@@ -52,6 +52,20 @@ namespace OloEcomm.Controllers
 
         }
 
+        
+        [HttpGet("GetVendorProducts")]
+        public async Task<IActionResult> GetUsersProduct(string username) 
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var products = await _productReposity.GetUserProductsAsync(username);
+            var productsDto = products.Select(s => s.ToProductDto()).ToList();
+            return Ok(productsDto);
+        }
+
 
         [Authorize]
         [HttpGet("{id}")]

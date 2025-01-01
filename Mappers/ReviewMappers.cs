@@ -13,6 +13,7 @@ namespace OloEcomm.Mappers
                 Id = reviewModel.Id,
                 Comment = reviewModel.Comment,
                 Rating = reviewModel.Rating,
+                CreatedBy = reviewModel.User?.UserName,
                 ReviewDate = reviewModel.ReviewDate,
                 ProductId = reviewModel.ProductId,
             };

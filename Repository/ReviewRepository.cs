@@ -2,6 +2,7 @@
 using OloEcomm.Data;
 using OloEcomm.Interface;
 using OloEcomm.Model;
+using System.Reflection.Metadata;
 
 namespace OloEcomm.Repository
 {
@@ -34,9 +35,29 @@ namespace OloEcomm.Repository
             return review;
         }
 
+        public async Task<Review?> DeleteUserReviewAsync (int id, string username)
+        {
+            var review = await _context.Reviews.Where(s => s.User.UserName == username).FirstOrDefaultAsync(x => x.Id == id);
+
+            if (review == null)
+            {
+                return null;
+            }
+
+            _context.Reviews.Remove(review);
+            await _context.SaveChangesAsync();
+            return review;
+        }
+    
+
         public async Task<List<Review>> GetAllAsync()
         {
-            return await _context.Reviews.ToListAsync();
+            return await _context.Reviews.Include(r=>r.User).ToListAsync();
+        }
+
+        public async Task<List<Review>> GetUserCommentAsync(string username)
+        {
+            return await _context.Reviews.Include(r => r.User).Where(s => s.User.UserName == username).ToListAsync();
         }
 
         public async Task<Review?> GetByIdAsync(int id)
