@@ -6,8 +6,11 @@
         public int ProductId { get; set; }
 
         public Product? Product { get; set; }
+        public string? UserId { get; set; }
 
-        public string User { get; set; } = string.Empty;   
+        public User? User { get; set; }
+
+        public string UserWishlist { get; set; } = string.Empty;   
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
 

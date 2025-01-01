@@ -1,16 +1,18 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.ComponentModel.DataAnnotations;
 
 namespace OloEcomm.Model
 {
     public class User:IdentityUser
     {
-        [Required]
+      
         public string? FirstName { get; set; }
 
-        [Required]
+       
         public string? LastName { get; set; }
 
+        public string? Role { get; set; }
         public string? RefreshToken { get; set; }
 
         public DateTime? RefreshTokenExpiryTime { get; set; }
@@ -21,5 +23,8 @@ namespace OloEcomm.Model
 
         public ICollection<Product> Products { get; set; } = new List<Product>();
         public ICollection<Review> Reviews { get; set; } = new List<Review>();
+
+        public ICollection<Wishlist> Wishlists { get; set; } = new List<Wishlist>();
     }
 }
+

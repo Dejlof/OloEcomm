@@ -10,7 +10,6 @@ namespace OloEcomm.Mappers
             return new WishListDto
             {
                Id = wishlistModel.Id,
-               User = wishlistModel.User,
                CreatedDate = wishlistModel.CreatedDate,
                ProductId = wishlistModel.ProductId,
             };

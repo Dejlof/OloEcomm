@@ -36,10 +36,43 @@ namespace OloEcomm.Repository
             return productModel;
         }
 
+        public async Task<Product> DeleteUserProductAsync(string userName, int id)
+        {
+            var userProductModel = await _context.Products.Include(s => s.ProductImages)
+            .Include(s => s.Reviews).Where(s => s.User.UserName == userName).FirstOrDefaultAsync(x => x.Id == id);
+
+            if (userProductModel == null)
+            {
+                return null;
+            }
+
+            _context.Products.Remove(userProductModel);
+            await _context.SaveChangesAsync();
+            return userProductModel;
+
+        }
+
+
         public async Task<List<Product>> GetAllProductsAsync()
         {
-            return await _context.Products.Include(s=>s.ProductImages)
-             .Include(s=> s.Reviews).ToListAsync();
+            return await _context.Products
+     .Include(p => p.ProductImages)
+     .Include(p => p.Reviews)
+     .Include(p => p.User) 
+     .ToListAsync();
+
+        }
+
+
+        public async Task<List<Product>> GetUserProductsAsync(string userName)
+        {
+            return await _context.Products
+     .Include(p => p.ProductImages)
+     .Include(p => p.Reviews)
+     .Include(p => p.User)
+     .Where(s => s.User.UserName == userName)
+     .ToListAsync();
+
         }
 
         public async Task<Product> GetById(int id)

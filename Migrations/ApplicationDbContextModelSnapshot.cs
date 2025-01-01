@@ -206,7 +206,7 @@ namespace OloEcomm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("User")
+                    b.Property<string>("UserAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -232,15 +232,15 @@ namespace OloEcomm.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("OrderedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
-
-                    b.Property<string>("User")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -448,6 +448,10 @@ namespace OloEcomm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -456,10 +460,6 @@ namespace OloEcomm.Migrations
 
                     b.Property<DateTime>("ReviewDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("User")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -493,11 +493,9 @@ namespace OloEcomm.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -529,6 +527,9 @@ namespace OloEcomm.Migrations
                     b.Property<DateTime?>("RefreshTokenExpiryTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -556,7 +557,7 @@ namespace OloEcomm.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "08fcd6fb-767c-4e7d-ba23-d162c5a2ba99",
+                            ConcurrencyStamp = "6d1da0f2-e821-4e30-a331-9f612c2f5f43",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
@@ -564,10 +565,11 @@ namespace OloEcomm.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEB5cYKpAmjbhHcNg6Bb++J7CCT2N1RSLZErp2psijyfBB1QsrGwJ5Ivb8yrmK7nbfQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEbhF4Oi1nivhbfJyXyQCk1fvFg/653JQmT//OHRWR/6FIcnowLdwVcOpmd2kzI6rQ==",
                             PhoneNumber = "133-476-7890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
+                            Role = "Admin",
+                            SecurityStamp = "f2f12feb-2693-49b2-bc14-9961fb9c00ac",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -587,13 +589,18 @@ namespace OloEcomm.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<string>("User")
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserWishlist")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Wishlist");
                 });
@@ -651,9 +658,11 @@ namespace OloEcomm.Migrations
 
             modelBuilder.Entity("OloEcomm.Model.Address", b =>
                 {
-                    b.HasOne("OloEcomm.Model.User", null)
+                    b.HasOne("OloEcomm.Model.User", "User")
                         .WithMany("Address")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.CartItem", b =>
@@ -664,11 +673,13 @@ namespace OloEcomm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OloEcomm.Model.User", null)
+                    b.HasOne("OloEcomm.Model.User", "User")
                         .WithMany("CartItems")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Order", b =>
@@ -720,11 +731,13 @@ namespace OloEcomm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OloEcomm.Model.User", null)
+                    b.HasOne("OloEcomm.Model.User", "User")
                         .WithMany("Products")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Category");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.ProductImage", b =>
@@ -746,11 +759,13 @@ namespace OloEcomm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OloEcomm.Model.User", null)
+                    b.HasOne("OloEcomm.Model.User", "User")
                         .WithMany("Reviews")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Wishlist", b =>
@@ -761,7 +776,13 @@ namespace OloEcomm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("OloEcomm.Model.User", "User")
+                        .WithMany("Wishlists")
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Address", b =>
@@ -798,6 +819,8 @@ namespace OloEcomm.Migrations
                     b.Navigation("Products");
 
                     b.Navigation("Reviews");
+
+                    b.Navigation("Wishlists");
                 });
 #pragma warning restore 612, 618
         }

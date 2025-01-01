@@ -11,7 +11,6 @@ namespace OloEcomm.Mappers
             {
              
                 Quantity = cartItem.Quantity,
-                User = cartItem.User,
                 ProductId = cartItem.ProductId,
             };
 

@@ -22,7 +22,7 @@ namespace OloEcomm.Dtos.Account
         [Remote(action: "IsPhoneNumberlAlreadyRegister", controller: "Acccount", ErrorMessage = "PhoneNumber is already in use")]
         public string? PhoneNumber { get; set; } = string.Empty;
 
-
+        
         [Required(ErrorMessage ="Password cannot be blank")]
         public string Password { get; set; } = string.Empty;
 

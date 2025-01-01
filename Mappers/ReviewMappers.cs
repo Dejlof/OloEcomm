@@ -11,7 +11,6 @@ namespace OloEcomm.Mappers
             return new ReviewDto
             {
                 Id = reviewModel.Id,
-                User = reviewModel.User,
                 Comment = reviewModel.Comment,
                 Rating = reviewModel.Rating,
                 ReviewDate = reviewModel.ReviewDate,

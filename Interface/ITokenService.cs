@@ -9,6 +9,6 @@ namespace OloEcomm.Interface
 
         string GenerateRefreshToken(out DateTime expiryTime);
 
-        ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
+       
     }
 }

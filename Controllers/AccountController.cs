@@ -26,6 +26,29 @@ namespace OloEcomm.Controllers
             _tokenService = tokenService;
         }
 
+        [HttpGet("Get-all-users")]
+        public async Task <IActionResult> GetAll() 
+        {
+            if (!ModelState.IsValid)
+            {
+                string errorMessage = string.Join("|",
+                    ModelState.Values.SelectMany(x => x.Errors).Select(
+                        e => e.ErrorMessage));
+                throw new ArgumentException(errorMessage);
+            }
+
+            var users = await _userManager.Users.Select(u => new UserDto {
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Email = u.Email,
+                PhoneNumber = u.PhoneNumber,
+                UserName = u.UserName,
+                Role = u.Role,
+            }).ToListAsync();
+
+            return Ok(users);
+        }
+
         [HttpPost("Register")]
         public async Task<IActionResult> Register([FromBody]RegisterDto registerDto, [FromQuery] Role role)
         {
@@ -51,8 +74,9 @@ namespace OloEcomm.Controllers
                     UserName = registerDto.Email,
                     Email = registerDto.Email,
                     PhoneNumber = registerDto.PhoneNumber,
+                    Role = role.ToString(),
                 };
-
+                
                 IdentityResult result = await _userManager.CreateAsync(user, registerDto.Password);
 
                 if (result.Succeeded)
@@ -85,7 +109,7 @@ namespace OloEcomm.Controllers
                         {
                             Email = registerDto.Email,
                             PhoneNumber = registerDto.PhoneNumber,
-                            Role = $" User created with the {role}",
+                            Role = role.ToString(),
                             Token = await _tokenService.CreateToken(user),
                             RefreshToken = refreshToken,
                             RefreshTokenExpiryTime = expiryTime,
@@ -194,7 +218,7 @@ namespace OloEcomm.Controllers
             });
         }
 
-        [HttpPost("RefreshToken")]
+        [HttpPost("GenerateNewRefreshToken")]
         public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequestDto request)
         {
 

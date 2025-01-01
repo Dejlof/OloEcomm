@@ -73,30 +73,6 @@ namespace OloEcomm.Services
             return Convert.ToBase64String(bytes);
         }
 
-        public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
-        {
-            var tokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = _key,
-                ValidateIssuer = true,
-                ValidIssuer = _config["JWT:Issuer"],
-                ValidateAudience = true,
-                ValidAudience = _config["JWT:Audience"],
-                ValidateLifetime = false // Don't validate expiration for this method
-            };
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
-
-            if (securityToken is not JwtSecurityToken jwtSecurityToken ||
-                !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha512, StringComparison.InvariantCultureIgnoreCase))
-            {
-                throw new SecurityTokenException("Invalid token");
-            }
-
-            return principal;
-        }
-
+ 
     }
 }

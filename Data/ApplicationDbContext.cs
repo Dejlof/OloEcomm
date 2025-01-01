@@ -28,34 +28,34 @@ namespace OloEcomm.Data
         public DbSet<Address> Addresses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
+  {
+      base.OnModelCreating(builder);
 
 
-            List<IdentityRole> roles = new List<IdentityRole>
-            {
+      List<IdentityRole> roles = new List<IdentityRole>
+      {
 
-                new IdentityRole
-                {
-                    Id ="1",
-                    Name = "Admin",
-                    NormalizedName = "ADMIN"
-                },
+          new IdentityRole
+          {
+              Id ="1",
+              Name = "Admin",
+              NormalizedName = "ADMIN"
+          },
 
-                new IdentityRole
-                {
-                    Id ="2",
-                    Name ="Vendor",
-                    NormalizedName = "VENDOR"
-                },
+          new IdentityRole
+          {
+              Id ="2",
+              Name ="Vendor",
+              NormalizedName = "VENDOR"
+          },
 
-                new IdentityRole
-                {
-                    Id="3",
-                    Name ="Buyer",
-                    NormalizedName = "BUYER"
-                }
-            };
+          new IdentityRole
+          {
+              Id="3",
+              Name ="Buyer",
+              NormalizedName = "BUYER"
+          }
+      };
 
             var admin = new User
             {
@@ -64,24 +64,29 @@ namespace OloEcomm.Data
                 Email = "admin@gmail.com",
                 NormalizedUserName = "ADMIN@GMAIL.COM",
                 NormalizedEmail = "ADMIN@GMAIL.COM",
-                FirstName = "Admin", 
-                LastName = "User",     
+                FirstName = "Admin",
+                LastName = "User",
+                Role = "Admin",
+                RefreshToken = null,
+                RefreshTokenExpiryTime = null,
                 EmailConfirmed = true,
                 PasswordHash = new PasswordHasher<User>().HashPassword(null, "YourPassword123!"),
                 PhoneNumber = "133-476-7890",
-                SecurityStamp = new Guid().ToString("D")
+                SecurityStamp = Guid.NewGuid().ToString("D")
             };
-
-           builder.Entity<IdentityRole>().HasData(roles);
-            builder.Entity<User>().HasData(admin);
 
             var adminUserRole = new IdentityUserRole<string>
             {
-                RoleId = "1",
-                UserId = "2",
+                RoleId = "1", 
+                UserId = "2"  
             };
 
-        builder.Entity<IdentityUserRole<string>>().HasData(adminUserRole);
+            builder.Entity<IdentityRole>().HasData(roles);
+            builder.Entity<User>().HasData(admin);
+            builder.Entity<IdentityUserRole<string>>().HasData(adminUserRole);
+
         }
+
     }
 }
+

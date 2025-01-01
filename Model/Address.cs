@@ -8,7 +8,10 @@
         public string State { get; set; } = string.Empty;
         public string ZipCode { get; set; } = string.Empty;
         public string Country { get; set; } = string.Empty;
-        public string User { get; set; } = string.Empty;
+        public string UserAddress { get; set; } = string.Empty;
+        public string? UserId { get; set; }
+
+        public User? User { get; set; }
 
         public ICollection<Order> Orders { get; set; } = new List<Order>(); 
     }

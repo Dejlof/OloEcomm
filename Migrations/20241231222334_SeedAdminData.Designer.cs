@@ -12,8 +12,8 @@ using OloEcomm.Data;
 namespace OloEcomm.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241001134900_AddUserAdmin")]
-    partial class AddUserAdmin
+    [Migration("20241231222334_SeedAdminData")]
+    partial class SeedAdminData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -161,7 +161,7 @@ namespace OloEcomm.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "1",
+                            UserId = "2",
                             RoleId = "1"
                         });
                 });
@@ -209,7 +209,7 @@ namespace OloEcomm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("User")
+                    b.Property<string>("UserAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -235,15 +235,15 @@ namespace OloEcomm.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("OrderedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
-
-                    b.Property<string>("User")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -451,6 +451,10 @@ namespace OloEcomm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -459,10 +463,6 @@ namespace OloEcomm.Migrations
 
                     b.Property<DateTime>("ReviewDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("User")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -496,11 +496,9 @@ namespace OloEcomm.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
@@ -525,6 +523,15 @@ namespace OloEcomm.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("RefreshToken")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RefreshTokenExpiryTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -551,22 +558,23 @@ namespace OloEcomm.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
+                            Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "78011ea4-0208-41d2-82f8-daaa830587cc",
-                            Email = "admin@example.com",
+                            ConcurrencyStamp = "6d1da0f2-e821-4e30-a331-9f612c2f5f43",
+                            Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
                             LastName = "User",
                             LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@EXAMPLE.COM",
-                            NormalizedUserName = "ADMIN@EXAMPLE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKpB5xqUaPhdg8EQQE2US5Wdr1E27vXEQkG8tkkAxBFZdBbXa32F3KVpx0JGefJkrQ==",
+                            NormalizedEmail = "ADMIN@GMAIL.COM",
+                            NormalizedUserName = "ADMIN@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEbhF4Oi1nivhbfJyXyQCk1fvFg/653JQmT//OHRWR/6FIcnowLdwVcOpmd2kzI6rQ==",
                             PhoneNumber = "133-476-7890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "00000000-0000-0000-0000-000000000000",
+                            Role = "Admin",
+                            SecurityStamp = "f2f12feb-2693-49b2-bc14-9961fb9c00ac",
                             TwoFactorEnabled = false,
-                            UserName = "admin@example.com"
+                            UserName = "admin@gmail.com"
                         });
                 });
 
@@ -584,13 +592,18 @@ namespace OloEcomm.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<string>("User")
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserWishlist")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Wishlist");
                 });
@@ -648,9 +661,11 @@ namespace OloEcomm.Migrations
 
             modelBuilder.Entity("OloEcomm.Model.Address", b =>
                 {
-                    b.HasOne("OloEcomm.Model.User", null)
+                    b.HasOne("OloEcomm.Model.User", "User")
                         .WithMany("Address")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.CartItem", b =>
@@ -661,11 +676,13 @@ namespace OloEcomm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OloEcomm.Model.User", null)
+                    b.HasOne("OloEcomm.Model.User", "User")
                         .WithMany("CartItems")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Order", b =>
@@ -717,11 +734,13 @@ namespace OloEcomm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OloEcomm.Model.User", null)
+                    b.HasOne("OloEcomm.Model.User", "User")
                         .WithMany("Products")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Category");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.ProductImage", b =>
@@ -743,11 +762,13 @@ namespace OloEcomm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OloEcomm.Model.User", null)
+                    b.HasOne("OloEcomm.Model.User", "User")
                         .WithMany("Reviews")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Wishlist", b =>
@@ -758,7 +779,13 @@ namespace OloEcomm.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("OloEcomm.Model.User", "User")
+                        .WithMany("Wishlists")
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Address", b =>
@@ -795,6 +822,8 @@ namespace OloEcomm.Migrations
                     b.Navigation("Products");
 
                     b.Navigation("Reviews");
+
+                    b.Navigation("Wishlists");
                 });
 #pragma warning restore 612, 618
         }
