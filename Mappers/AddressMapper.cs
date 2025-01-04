@@ -15,7 +15,7 @@ namespace OloEcomm.Mappers
                 State = addressModel.State,
                 ZipCode = addressModel.ZipCode,
                 Country = addressModel.Country,
-
+                UserAddress= addressModel.User?.UserName
             };
         }
 

@@ -34,9 +34,28 @@ namespace OloEcomm.Repository
            
         }
 
+        public async Task<Address> DeleteUserAddressAsync(int id, string username)
+        {
+            var address = await _context.Addresses.Where(s=>s.User.UserName == username).FirstOrDefaultAsync(s => s.Id == id);
+            if (address == null)
+            {
+                return null;
+            }
+            _context.Addresses.Remove(address);
+
+            await _context.SaveChangesAsync();
+            return address;
+
+        }
+
+
+
+
+
+
         public async Task<Address> GetAddressById(int id)
         {
-            var address = await _context.Addresses.Include(s=>s.Orders).FirstOrDefaultAsync(s => s.Id == id);
+            var address = await _context.Addresses.Include(s=>s.Orders).Include(s=>s.User).FirstOrDefaultAsync(s => s.Id == id);
             if (address == null)
             {
                 return null;
@@ -44,9 +63,9 @@ namespace OloEcomm.Repository
             return address;
         }
 
-        public async Task<List<Address>> GetAddressesAsync()
+        public async Task<List<Address>> GetAddressesAsync(string username)
         {
-           return await _context.Addresses.Include(s=>s.Orders).ToListAsync();
+           return await _context.Addresses.Include(s=>s.Orders).Include(s => s.User).Where(s=>s.User.UserName== username).ToListAsync();
         }
 
         public async Task<Address> UpdateAddressAsync(int id, UpdateAddressDto address)
