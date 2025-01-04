@@ -9,9 +9,11 @@ namespace OloEcomm.Mappers
         {
             return new CartItemDto
             {
-             
+               ProductAdded = cartItem.ProductAdded,
                 Quantity = cartItem.Quantity,
                 ProductId = cartItem.ProductId,
+                OrderedBy = cartItem.User?.UserName
+
             };
 
         }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OloEcomm.Data;
 
@@ -11,9 +12,11 @@ using OloEcomm.Data;
 namespace OloEcomm.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250104010914_ProductAdded")]
+    partial class ProductAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,8 +249,7 @@ namespace OloEcomm.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)")
-                        .HasColumnName("UserId");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -562,7 +564,7 @@ namespace OloEcomm.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b6c4bc67-a09d-40b8-9f32-d4d2eb62ca2d",
+                            ConcurrencyStamp = "67957c53-3ba4-4c8b-aa7d-b4cd41b3c01d",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
@@ -570,11 +572,11 @@ namespace OloEcomm.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEG1veJ4h3eygrcDuP7TJTCiGShAuSGRROsIQEsMX9ipbfIV1uzh5zC7onhJTAMpX3g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE022Xn8Yu4Fp/xqjBHy9RFzhPNdOP6J+ZwDJAGdmNejBPOFLiFbCYqAkxpBboJ53Q==",
                             PhoneNumber = "133-476-7890",
                             PhoneNumberConfirmed = false,
                             Role = "Admin",
-                            SecurityStamp = "16413ab9-f691-457c-b4ac-345a5a3afb72",
+                            SecurityStamp = "f064e8ff-6bd3-4013-a248-27b6965d85f6",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });

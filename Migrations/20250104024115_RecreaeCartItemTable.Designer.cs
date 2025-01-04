@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OloEcomm.Data;
 
@@ -11,9 +12,11 @@ using OloEcomm.Data;
 namespace OloEcomm.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250104024115_RecreaeCartItemTable")]
+    partial class RecreaeCartItemTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -237,7 +240,9 @@ namespace OloEcomm.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductAdded")
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(max)")
+                        .HasDefaultValue("");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -246,14 +251,20 @@ namespace OloEcomm.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)")
                         .HasColumnName("UserId");
+
+                    b.Property<string>("UserId1")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("UserId1");
 
                     b.ToTable("CartItems");
                 });
@@ -562,7 +573,7 @@ namespace OloEcomm.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b6c4bc67-a09d-40b8-9f32-d4d2eb62ca2d",
+                            ConcurrencyStamp = "5f4f428a-7cf5-481c-82a2-c54e037009b7",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
@@ -570,11 +581,11 @@ namespace OloEcomm.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEG1veJ4h3eygrcDuP7TJTCiGShAuSGRROsIQEsMX9ipbfIV1uzh5zC7onhJTAMpX3g==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDhykNDoJzTeoBgjkZW/nnaEhhYns90MK1heHRgIZk/YeXGKi7wzmlLjczSZEz1Y0w==",
                             PhoneNumber = "133-476-7890",
                             PhoneNumberConfirmed = false,
                             Role = "Admin",
-                            SecurityStamp = "16413ab9-f691-457c-b4ac-345a5a3afb72",
+                            SecurityStamp = "9a3c92e5-897f-479c-b3f9-33cb828127b0",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -679,8 +690,14 @@ namespace OloEcomm.Migrations
                         .IsRequired();
 
                     b.HasOne("OloEcomm.Model.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("OloEcomm.Model.User", null)
                         .WithMany("CartItems")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId1");
 
                     b.Navigation("Product");
 
