@@ -18,5 +18,7 @@ namespace OloEcomm.Interface
         Task<Product?> DeleteProductAsync (int id);
 
        Task<bool> productExists (int id);
+
+        Task<Product> productExist(int id);
     }
 }

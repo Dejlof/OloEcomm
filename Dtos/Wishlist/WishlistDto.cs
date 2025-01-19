@@ -9,6 +9,8 @@
 
         public string UserWishlist { get; set; } = string.Empty;
 
+        public string WishlistItem { get; set; } = string.Empty;
+
         public DateTime CreatedDate { get; set; } = DateTime.Now;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using OloEcomm.Dtos.Wishlist;
 using OloEcomm.Model;
+using OloEcomm.Repository;
 
 namespace OloEcomm.Mappers
 {
@@ -12,15 +13,19 @@ namespace OloEcomm.Mappers
                Id = wishlistModel.Id,
                CreatedDate = wishlistModel.CreatedDate,
                ProductId = wishlistModel.ProductId,
+               WishlistItem = wishlistModel.WishlistItem,
+               UserWishlist = wishlistModel.User?.UserName
             };
         }
 
-        public static Wishlist CreateToWishlistDto(this CreateWishlistDto wishlistDto, int productId )
+        public static Wishlist CreateToWishlistDto(this CreateWishlistDto wishlistDto, int productId)
         {
             return new Wishlist
             {
                 ProductId = productId,
+              
             };
         }
+
     }
 }

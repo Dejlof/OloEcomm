@@ -1,10 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OloEcomm.Data.Enum;
 using OloEcomm.Dtos.Review;
 using OloEcomm.Dtos.Wishlist;
+using OloEcomm.Extensions;
 using OloEcomm.Interface;
 using OloEcomm.Mappers;
+using OloEcomm.Model;
 using OloEcomm.Repository;
 
 namespace OloEcomm.Controllers
@@ -15,24 +20,33 @@ namespace OloEcomm.Controllers
     {
         private readonly IWishlistRepository _wishlistRepository;
         private readonly IProductReposity _productReposity;
+        private readonly UserManager<User> _userManager;
 
 
-
-        public WishlistController(IWishlistRepository wishlistRepository, IProductReposity productReposity) 
+        public WishlistController(IWishlistRepository wishlistRepository, IProductReposity productReposity, UserManager<User> userManager) 
         {
         _wishlistRepository = wishlistRepository;
             _productReposity = productReposity;
+            _userManager = userManager;
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
-         var wishlist = await _wishlistRepository.GetAllAsync();
+            var user = User.GetUsername();
+
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+            var wishlist = await _wishlistRepository.GetAllAsync(user);
          var wishlistDto = wishlist.Select(s => s.ToWishlistDto()).ToList(); 
         return Ok(wishlistDto);
         }
 
         [HttpGet("{id:int}")]
+        [Authorize]
         public async Task<IActionResult> GetById(int id) 
         {
             if (!ModelState.IsValid)
@@ -48,6 +62,7 @@ namespace OloEcomm.Controllers
          }
         
         [HttpPost("{productId:int}")]
+        [Authorize]
         public async Task<IActionResult> AddWishlist([FromRoute]int productId, [FromBody] CreateWishlistDto wishlistDto)
         {
             if (!ModelState.IsValid)
@@ -56,14 +71,23 @@ namespace OloEcomm.Controllers
             }
 
 
-
-            if (!await _productReposity.productExists(productId))
+            var product = await _productReposity.productExist(productId);
+            if (product == null)
             {
-                return BadRequest("Product does not exist");
-               
+                return BadRequest("Product not found");
             }
-              
-            var wishlistModel = wishlistDto.CreateToWishlistDto(productId);   
+
+            var user = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(user);
+            if (appUser == null)
+            {
+                return Unauthorized("User not permitted");
+            }
+
+            var wishlistModel = wishlistDto.CreateToWishlistDto(productId);
+            wishlistModel.UserId = appUser.Id;
+            wishlistModel.WishlistItem = product.Name;
+            wishlistModel.UserWishlist = user;
             await _wishlistRepository.CreateAsync(wishlistModel);
 
             return CreatedAtAction(nameof(GetById), new { id = productId }, wishlistModel.ToWishlistDto());
@@ -71,13 +95,21 @@ namespace OloEcomm.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public async Task<IActionResult> DeleteById(int id) {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var wishList = await _wishlistRepository.DeleteAsync(id);
+            var user = User.GetUsername();
+
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+            var wishList = await _wishlistRepository.DeleteAsync(id, user);
 
             if (wishList == null) 
             { 

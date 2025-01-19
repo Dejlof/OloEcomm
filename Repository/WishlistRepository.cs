@@ -19,9 +19,9 @@ namespace OloEcomm.Repository
             return wishlist;
         }
 
-        public async Task<Wishlist> DeleteAsync(int id)
+        public async Task<Wishlist> DeleteAsync(int id, string username)
         {
-           var wishlist = await _context.Wishlist.FirstOrDefaultAsync(x => x.Id == id);
+           var wishlist = await _context.Wishlist.Where(s=>s.User.UserName==username).FirstOrDefaultAsync(x => x.Id == id);
 
             if (wishlist == null)
             {
@@ -33,14 +33,14 @@ namespace OloEcomm.Repository
             return wishlist;
         }
 
-        public async Task<List<Wishlist>> GetAllAsync()
+        public async Task<List<Wishlist>> GetAllAsync(string username)
         {
-            return await _context.Wishlist.ToListAsync();
+            return await _context.Wishlist.Include(r => r.User).Where(s => s.User.UserName == username).ToListAsync();
         }
 
         public async Task<Wishlist> GetByIdAsync(int id)
         {
-            var wishlistModel = await _context.Wishlist.FirstOrDefaultAsync(x=>x.Id==id); 
+            var wishlistModel = await _context.Wishlist.Include(r => r.User).FirstOrDefaultAsync(x=>x.Id==id); 
 
             if (wishlistModel == null)
             {

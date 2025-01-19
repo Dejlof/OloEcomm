@@ -92,6 +92,11 @@ namespace OloEcomm.Repository
             return _context.Products.AnyAsync(x => x.Id == id);
         }
 
+        public async Task<Product> productExist(int id)
+        {
+            return await _context.Products.FindAsync(id);
+        }
+
         public async Task<Product> UpdateProductAsync(int id, Product productModel)
         {
             var existingProduct = await _context.Products.Include(s => s.ProductImages)
