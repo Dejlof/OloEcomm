@@ -1,4 +1,6 @@
-﻿namespace OloEcomm.Model
+﻿using System.Text.Json.Serialization;
+
+namespace OloEcomm.Model
 {
     public class Address
     {
@@ -11,6 +13,7 @@
         public string UserAddress { get; set; } = string.Empty;
         public string? UserId { get; set; }
 
+      
         public User? User { get; set; }
 
         public ICollection<Order> Orders { get; set; } = new List<Order>(); 

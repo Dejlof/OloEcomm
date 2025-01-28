@@ -2,9 +2,9 @@
 {
     public enum PaymentMethod
     {
-        DebitCard,
-        BankTransfer,
-        USSD
+        DebitCard = 1,
+        BankTransfer = 2,
+        USSD =3
     }
 }
 
