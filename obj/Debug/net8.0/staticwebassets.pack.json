@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\images\\769f78e4-110f-4895-8506-e319f94b89e6.jpg"
     },
     {
+      "Id": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\wwwroot\\images\\9ac829b1-85e2-4658-bc02-8b5f8f021f81.jpg",
+      "PackagePath": "staticwebassets\\images\\9ac829b1-85e2-4658-bc02-8b5f8f021f81.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.OloEcomm.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

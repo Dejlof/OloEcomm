@@ -25,7 +25,7 @@ namespace OloEcomm.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> CreateOrderFromCart(int addressId, [FromQuery] PaymentMethod paymentMethod)
+        public async Task<IActionResult> CreateOrderFromCart(int addressId)
         {
 
             if (!ModelState.IsValid)
@@ -35,10 +35,7 @@ namespace OloEcomm.Controllers
                         e => e.ErrorMessage));
                 throw new ArgumentException(errorMessage);
             }
-            if (!Enum.IsDefined(typeof(PaymentMethod), paymentMethod))
-            {
-                return BadRequest("Invalid Payment Method selected.");
-            }
+          
 
             var user = User.GetUsername();
             if (user == null)
@@ -49,7 +46,7 @@ namespace OloEcomm.Controllers
 
             try
             {
-                var createdOrder = await _orderRepository.CreateOrderFromCartAsync(appUser.Id, addressId, paymentMethod);
+                var createdOrder = await _orderRepository.CreateOrderFromCartAsync(appUser.Id, addressId);
 
                 return CreatedAtAction(nameof(GetOrderById), new { id = createdOrder.Id }, createdOrder.ToOrderDto());
             }
@@ -128,31 +125,6 @@ namespace OloEcomm.Controllers
 
         }
 
-        [Authorize]
-        [HttpPut("{orderId:int}/UpdatePaymentStatus")]
-        public async Task<IActionResult> UpdatePaymentStatus([FromRoute] int orderId, [FromQuery] PaymentStatus paymentStatus)
-        {
-            if (!ModelState.IsValid)
-            {
-                string errorMessage = string.Join("|",
-                    ModelState.Values.SelectMany(x => x.Errors).Select(
-                        e => e.ErrorMessage));
-                throw new ArgumentException(errorMessage);
-            }
 
-            if (!Enum.IsDefined(typeof(PaymentStatus), paymentStatus))
-            {
-                return BadRequest("Invalid Payment Status.");
-            }
-            try
-            {
-                var orderPaymentUpdate = await _orderRepository.UpdatePaymentStatus(orderId, paymentStatus);
-                return Ok(new { message = "Payment status updated successfully" });
-            }
-            catch (InvalidOperationException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
-        }
     }
 }

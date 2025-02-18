@@ -16,11 +16,9 @@ namespace OloEcomm.Model
         public string AddressOrdered { get; set; } = string.Empty;
         public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
         public decimal Amount { get; set; }
-        public string PaymentMethod { get; set; } = string.Empty;
-        public string PaymentStatus { get; set; } = string.Empty;
-        public DateTime PaymentDate { get; set; } = DateTime.Now;
 
-        public Guid TransactionId { get; set; } = Guid.NewGuid();
+     
+       
 
     }
 }

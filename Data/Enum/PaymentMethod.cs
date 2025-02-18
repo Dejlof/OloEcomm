@@ -2,8 +2,8 @@
 {
     public enum PaymentMethod
     {
-        DebitCard = 1,
-        BankTransfer = 2,
+        PayStack= 1,
+        Flu = 2,
         USSD =3
     }
 }

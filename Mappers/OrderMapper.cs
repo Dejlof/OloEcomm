@@ -15,10 +15,7 @@ namespace OloEcomm.Mappers
                 AddressOrdered = order.AddressOrdered,
                 OrderDetails = order.OrderDetails.Select(s => s.ToOrderDetailsDto()).ToList(),
                 Amount = order.Amount,
-                PaymentMethod = order.PaymentMethod,
-                PaymentStatus = order.PaymentStatus,
-                PaymentDate = order.PaymentDate,
-                TransactionId = order.TransactionId,
+              
             };
         }
     }

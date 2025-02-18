@@ -16,6 +16,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.8",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.8",
           "Microsoft.Extensions.Identity.Core": "8.0.8",
+          "Paystack.Net": "1.1.1",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
@@ -762,6 +763,17 @@
           }
         }
       },
+      "Paystack.Net/1.1.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/PayStack.Net.dll": {
+            "assemblyVersion": "1.1.1.0",
+            "fileVersion": "1.1.1.0"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/6.4.0": {
         "dependencies": {
           "Microsoft.Extensions.ApiDescription.Server": "6.0.5",
@@ -1461,6 +1473,13 @@
       "sha512": "sha512-QYFyxhaABwmq3p/21VrZNYvCg3DaEoN/wUuw5nmfAf0X3HLjgupwhkEWdgfb9nvGAUIv3osmZoD3kKl4jxEmYQ==",
       "path": "newtonsoft.json.bson/1.0.2",
       "hashPath": "newtonsoft.json.bson.1.0.2.nupkg.sha512"
+    },
+    "Paystack.Net/1.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GQchzHMpN30JrGVgnZR8lWA0DYPTO30BjdKFm6yYWy8quSotq39dmxyJfYsSXHKPczVMljHpQoAyi8LXPM0WfA==",
+      "path": "paystack.net/1.1.1",
+      "hashPath": "paystack.net.1.1.1.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/6.4.0": {
       "type": "package",

@@ -16,7 +16,7 @@ namespace OloEcomm.Repository
             _context = context;
 
         }
-        public async Task<Order> CreateOrderFromCartAsync(string userId, int addressId, PaymentMethod paymentMethod)
+        public async Task<Order> CreateOrderFromCartAsync(string userId, int addressId)
         {
             var cartItems = await _context.CartItems
               .Include(ci => ci.Product)
@@ -45,8 +45,6 @@ namespace OloEcomm.Repository
                 AddressId = addressId,
                 AddressOrdered = $"{address.Street}, {address.City}, {address.State}, {address.ZipCode}, {address.Country}",
                 Amount = totalAmount,
-                PaymentMethod = paymentMethod.ToString(),
-                PaymentStatus = PaymentStatus.Pending.ToString(),
                 OrderDate = DateTime.Now,
                 OrderDetails = cartItems.Select(ci => new OrderDetail
                 {
@@ -77,24 +75,6 @@ namespace OloEcomm.Repository
             return await _context.Orders.Include(s => s.OrderDetails).Where(s => s.OrderedBy == username).ToListAsync();
         }
 
-        public async Task<Order?> UpdatePaymentStatus(int orderId, PaymentStatus paymentStatus)
-        {
-            var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == orderId);
-            if (order == null) 
-            {
-                throw new InvalidOperationException("Order not found");
-            }
-
-            order.PaymentStatus = paymentStatus.ToString();
-
-            if (paymentStatus == PaymentStatus.Completed)
-            {
-                order.PaymentDate = DateTime.Now; 
-            }
-
-            await _context.SaveChangesAsync();
-
-            return order;
-        }
+        
     }
 }

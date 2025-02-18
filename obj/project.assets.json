@@ -1159,6 +1159,18 @@
           }
         }
       },
+      "Paystack.Net/1.1.1": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/PayStack.Net.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/PayStack.Net.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/6.4.0": {
         "type": "package",
         "dependencies": {
@@ -3728,6 +3740,20 @@
         "newtonsoft.json.bson.nuspec"
       ]
     },
+    "Paystack.Net/1.1.1": {
+      "sha512": "GQchzHMpN30JrGVgnZR8lWA0DYPTO30BjdKFm6yYWy8quSotq39dmxyJfYsSXHKPczVMljHpQoAyi8LXPM0WfA==",
+      "type": "package",
+      "path": "paystack.net/1.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/netstandard2.0/PayStack.Net.dll",
+        "paystack-logo.png",
+        "paystack.net.1.1.1.nupkg.sha512",
+        "paystack.net.nuspec"
+      ]
+    },
     "Swashbuckle.AspNetCore/6.4.0": {
       "sha512": "eUBr4TW0up6oKDA5Xwkul289uqSMgY0xGN4pnbOIBqCcN9VKGGaPvHX3vWaG/hvocfGDP+MGzMA0bBBKz2fkmQ==",
       "type": "package",
@@ -4862,6 +4888,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.8",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.8",
       "Microsoft.Extensions.Identity.Core >= 8.0.8",
+      "PayStack.Net >= 1.1.1",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
@@ -4945,6 +4972,10 @@
           "Microsoft.Extensions.Identity.Core": {
             "target": "Package",
             "version": "[8.0.8, )"
+          },
+          "PayStack.Net": {
+            "target": "Package",
+            "version": "[1.1.1, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

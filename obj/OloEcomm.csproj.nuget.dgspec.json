@@ -82,6 +82,10 @@
               "target": "Package",
               "version": "[8.0.8, )"
             },
+            "PayStack.Net": {
+              "target": "Package",
+              "version": "[1.1.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"

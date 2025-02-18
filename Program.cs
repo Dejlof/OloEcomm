@@ -59,6 +59,9 @@ builder.Services.AddScoped<IWishlistRepository, WishlistRepository>();
 builder.Services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IPayStackService, PayStackService>();
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+
 
 
 

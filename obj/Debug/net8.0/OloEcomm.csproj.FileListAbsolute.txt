@@ -148,3 +148,4 @@ C:\Users\DEJI\source\repos\OloEcomm\OloEcomm\bin\Debug\net8.0\Microsoft.AspNetCo
 C:\Users\DEJI\source\repos\OloEcomm\OloEcomm\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\DEJI\source\repos\OloEcomm\OloEcomm\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\DEJI\source\repos\OloEcomm\OloEcomm\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\DEJI\source\repos\OloEcomm\OloEcomm\bin\Debug\net8.0\PayStack.Net.dll
