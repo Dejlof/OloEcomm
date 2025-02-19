@@ -134,11 +134,7 @@ namespace OloEcomm.Controllers
             }
             try
             {
-                var isDeleted = await _fileService.DeleteFileAsync(productImage.Url);
-                if (!isDeleted)
-                {
-                    return BadRequest("Failed to delete the image file from the server.");
-                }
+            
 
                 await _productImageRepository.DeleteImageAsync(id);
                 return Ok("Image deleted sucessfully");

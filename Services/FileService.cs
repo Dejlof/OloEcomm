@@ -1,16 +1,12 @@
 ﻿using OloEcomm.Interface;
+using System.IO.Compression;
 
 namespace OloEcomm.Services
 {
     public class FileService: IFileService
     {
 
-        private readonly string _imageDirectory;
-
-        public FileService(IConfiguration configuration)
-        {
-            _imageDirectory = configuration["ImageUpload:Directory"];
-        }
+     
         public async Task<string> SaveFileAsync(IFormFile imageFile, string[] allowedFileExtension)
         {
            if (imageFile == null)
@@ -20,43 +16,29 @@ namespace OloEcomm.Services
 
            
 
-            if (!Directory.Exists(_imageDirectory)) 
-            { 
-             Directory.CreateDirectory(_imageDirectory);
-            }
 
-            var ext = Path.GetExtension(imageFile.FileName);
+            var ext = Path.GetExtension(imageFile.FileName).ToLower();
 
             if (!allowedFileExtension.Contains(ext)) 
             {
                 throw new ArgumentException($"Only {string.Join(",", allowedFileExtension)} are allowed");
             }
 
-            var fileName = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
-            var filePath = Path.Combine(_imageDirectory, fileName);
-            using var stream = new FileStream(filePath, FileMode.Create);
-            await imageFile.CopyToAsync(stream);
+            using var memoryStream = new MemoryStream();
+            await imageFile.CopyToAsync(memoryStream);
+            byte[] imageBytes = memoryStream.ToArray();
 
-            var imageUrl = Path.Combine("/images", fileName); 
-            return imageUrl;
+            using (var outputStream = new MemoryStream())
+            {
+                using (var gzipStream = new GZipStream(outputStream, CompressionMode.Compress))
+                {
+                    gzipStream.Write(imageBytes, 0, imageBytes.Length);
+                }
+                byte[] compressedBytes = outputStream.ToArray();
+                string compressedBase64 = Convert.ToBase64String(compressedBytes);
+            }
         }
 
-        public async Task<bool> DeleteFileAsync(string fileNameWithExtension)
-        {
-            if (string.IsNullOrEmpty(fileNameWithExtension))
-            {
-                throw new ArgumentNullException(nameof(fileNameWithExtension));
-            }
-
-            var filePath = Path.Combine(_imageDirectory, Path.GetFileName(fileNameWithExtension));
-
-            if (File.Exists(filePath))
-            {
-                File.Delete(filePath);
-                return await Task.FromResult(true);
-            }
-
-            return await Task.FromResult(false);
-        }
+       
     }
 }
