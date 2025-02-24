@@ -21,7 +21,14 @@ namespace OloEcomm.Repository
                 throw new Exception($"Product with ID {productId} does not exist.");
             }
 
+
+            if (quantity > product.QuantityInStock)
+            {
+                throw new Exception("Product is not in stock");
+            }
+
             var existingCartItem = await _context.CartItems.FirstOrDefaultAsync(x => x.ProductId == productId && x.UserId == userId);
+
 
             if (existingCartItem != null)
             {
@@ -38,7 +45,7 @@ namespace OloEcomm.Repository
                     OrderedBy = username
                 };
 
-
+               
                 await _context.CartItems.AddAsync(existingCartItem);
             }
 
@@ -56,6 +63,13 @@ namespace OloEcomm.Repository
             if (product == null)
             {
                 throw new Exception($"Product with ID {productId} does not exist.");
+            }
+
+
+
+            if (quantity > product.QuantityInStock)
+            {
+                throw new Exception("Product is not in stock");
             }
 
             var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == username);

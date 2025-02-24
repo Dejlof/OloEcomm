@@ -35,8 +35,10 @@ namespace OloEcomm.Controllers
                 throw new ArgumentException(errorMessage);
             }
 
+            var username = User.GetUsername();
+
            
-            var payment = await _payStackService.InitializePayment(orderId);
+            var payment = await _payStackService.InitializePayment(orderId,username);
           
             return Ok(payment.ToPaymentDto());
 

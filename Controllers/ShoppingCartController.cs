@@ -142,6 +142,9 @@ namespace OloEcomm.Controllers
                 return BadRequest("Product does not exist");
 
             }
+          
+
+
 
             cartItemDto.Quantity = cartItemDto.Quantity > 0 ? cartItemDto.Quantity : 1;
 

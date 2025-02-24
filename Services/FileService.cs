@@ -1,5 +1,4 @@
 ﻿using OloEcomm.Interface;
-using System.IO.Compression;
 
 namespace OloEcomm.Services
 {
@@ -28,15 +27,8 @@ namespace OloEcomm.Services
             await imageFile.CopyToAsync(memoryStream);
             byte[] imageBytes = memoryStream.ToArray();
 
-            using (var outputStream = new MemoryStream())
-            {
-                using (var gzipStream = new GZipStream(outputStream, CompressionMode.Compress))
-                {
-                    gzipStream.Write(imageBytes, 0, imageBytes.Length);
-                }
-                byte[] compressedBytes = outputStream.ToArray();
-                string compressedBase64 = Convert.ToBase64String(compressedBytes);
-            }
+            string base64String = Convert.ToBase64String(imageBytes);
+            return base64String;
         }
 
        

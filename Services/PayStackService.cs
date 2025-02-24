@@ -23,10 +23,10 @@ namespace OloEcomm.Services
             _payStack = new PayStackApi(_secretKey);
             _dbContext = dbContext;
         }
-        public async Task<Payment> InitializePayment(int orderId)
+        public async Task<Payment> InitializePayment(int orderId, string username)
         {
 
-            var order = await _dbContext.Orders.FirstOrDefaultAsync(x => x.Id == orderId);
+            var order = await _dbContext.Orders.FirstOrDefaultAsync(x => x.Id == orderId && x.OrderedBy == username);
             if (order == null)
             {
                 throw new Exception("Order not found.");
@@ -36,7 +36,7 @@ namespace OloEcomm.Services
             var email = order.OrderedBy;
             var reference = Guid.NewGuid().ToString();
 
-            
+
 
             using (var httpClient = new HttpClient())
             {
@@ -55,12 +55,9 @@ namespace OloEcomm.Services
                 var jsonContent = new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json");
 
 
-                Console.WriteLine($"Request Headers: {httpClient.DefaultRequestHeaders}");
-                Console.WriteLine($"Request Body: {JsonConvert.SerializeObject(requestBody)}");
 
                 var response = await httpClient.PostAsync("https://api.paystack.co/transaction/initialize", jsonContent);
                 var responseString = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Raw Paystack Response: {responseString}");
                 var paystackResponse = JsonConvert.DeserializeObject<PaystackResponse>(responseString);
 
                 if (paystackResponse.Status)
@@ -70,7 +67,7 @@ namespace OloEcomm.Services
                         Amount = amount,
                         PaymentDate = paystackResponse.Data.PaidAt,
                         PaymentStatus = PaymentStatus.Pending.ToString(),
-                        Reference =paystackResponse.Data.Reference,
+                        Reference = paystackResponse.Data.Reference,
                         OrderId = orderId,
                         PaidBy = email,
                         AuthorizationUrl = paystackResponse.Data.AuthorizationUrl,
@@ -78,7 +75,7 @@ namespace OloEcomm.Services
                         Message = paystackResponse.Message,
                         Status = paystackResponse.Status,
                     };
-
+              
                     await _dbContext.Payments.AddAsync(payment);
                     await _dbContext.SaveChangesAsync();
 
@@ -94,28 +91,57 @@ namespace OloEcomm.Services
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Clear();
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer",_secretKey);
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _secretKey);
                 var response = await httpClient.GetAsync($"https://api.paystack.co/transaction/verify/{reference}");
                 var responseString = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"Raw Paystack Response: {responseString}");
                 var paystackResponse = JsonConvert.DeserializeObject<PaystackVerifyResponse>(responseString);
+
+                Console.WriteLine($"The Response String - {responseString}");
 
                 var payment = await _dbContext.Payments.FirstOrDefaultAsync(x => x.Reference == reference);
 
-                if (payment != null)
+                if (payment == null)
                 {
-                    if (paystackResponse.Status && paystackResponse.Data.Status == "success")
+                    throw new ArgumentException("Payment not Found");
+                }
+
+
+                if (paystackResponse.Status && paystackResponse.Data.Status == "success")
+                {
+                    payment.PaymentStatus = PaymentStatus.Completed.ToString();
+                    payment.PaymentDate = paystackResponse.Data.PaidAt;
+
+                    var order = await _dbContext.Orders
+                                       .Include(o => o.OrderDetails)
+                                    .FirstOrDefaultAsync(o => o.Id == payment.OrderId);
+
+                    foreach (var cartItem in order.OrderDetails)
                     {
-                        payment.PaymentStatus = PaymentStatus.Completed.ToString();
-                        await _dbContext.SaveChangesAsync();
-                        return true;
+                        var product = await _dbContext.Products.FindAsync(cartItem.ProductId);
+                        if (product != null)
+                        {
+                            if (product.QuantityInStock >= cartItem.Quantity)
+                            {
+                                product.QuantityInStock -= cartItem.Quantity;
+                            }
+                            else
+                            {
+                                throw new Exception($"Not enough stock for {product.Name}");
+                            }
+                        }
                     }
-                    payment.PaymentStatus = PaymentStatus.Failed.ToString();
+
+                    await _dbContext.SaveChangesAsync();
+                    return true;
+                }
+                else if (paystackResponse.Status && paystackResponse.Data.Status == "failed")
+                   { payment.PaymentStatus = PaymentStatus.Failed.ToString();
                     await _dbContext.SaveChangesAsync();
                     return false;
-                } 
+                }
+
+                return false;
             }
-            return false;
         }
-    }
+    } 
 }
