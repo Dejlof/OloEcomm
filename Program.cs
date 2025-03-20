@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -10,6 +11,9 @@ using OloEcomm.Interface;
 using OloEcomm.Model;
 using OloEcomm.Repository;
 using OloEcomm.Services;
+using Serilog;
+using Serilog.Sinks.MSSqlServer;
+using System.Collections.ObjectModel;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -72,6 +76,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+
+
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins", policy =>
@@ -119,7 +126,50 @@ builder.Services.AddAuthentication(options =>
 
 });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+});
+
+var columnOptions = new ColumnOptions
+{
+    AdditionalColumns = new Collection<SqlColumn>
+    {
+        new SqlColumn { ColumnName = "UserName", DataType = System.Data.SqlDbType.NVarChar, DataLength = 100 },
+        new SqlColumn { ColumnName = "MachineName", DataType = System.Data.SqlDbType.NVarChar, DataLength = 100 },
+        new SqlColumn { ColumnName = "Environment", DataType = System.Data.SqlDbType.NVarChar, DataLength = 50 },
+        new SqlColumn { ColumnName = "AppName", DataType = System.Data.SqlDbType.NVarChar, DataLength = 100 }
+    }
+};
+
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning) 
+    .MinimumLevel.Override("System", Serilog.Events.LogEventLevel.Warning)
+    .Filter.ByExcluding(log => log.MessageTemplate.Text.Contains("HealthCheck"))
+    .Enrich.WithMachineName()
+    .Enrich.WithThreadId()
+    .Enrich.WithEnvironmentName() // Logs Development, Staging, or Production
+    .Enrich.WithProperty("AppName", "OloEcomm") // Custom app name
+    .WriteTo.Console()
+    .WriteTo.File("Logs/debug_log.txt", rollingInterval: RollingInterval.Day)
+    .WriteTo.MSSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sinkOptions: new MSSqlServerSinkOptions
+        {
+            TableName = "Logs",
+            AutoCreateSqlTable = true
+        },
+        columnOptions: columnOptions
+    )
+    .CreateLogger();
+    
+builder.Host.UseSerilog();
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -130,10 +180,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseSerilogRequestLogging(); 
+
 app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+
 
 app.Run();

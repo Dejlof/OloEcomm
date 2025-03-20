@@ -1,0 +1,183 @@
+2025-03-20 10:13:00.929 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-20 10:13:01.049 +01:00 [INF] Fetching user: 08012233448
+2025-03-20 10:13:01.368 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-20 10:13:01.368 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-20 10:13:01.595 +01:00 [INF] Fetching user by phone: 08012233448
+2025-03-20 10:13:01.635 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-20 10:13:01.672 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-20 10:13:01.778 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-20 10:13:01.789 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 830.0477 ms
+2025-03-20 10:13:33.822 +01:00 [INF] HTTP GET /OloEcomm/ProductImage responded 403 in 27.2400 ms
+2025-03-20 10:14:07.762 +01:00 [INF] HTTP POST /OloEcomm/Product/1 responded 403 in 4.3348 ms
+2025-03-20 12:50:30.789 +01:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5014: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Address already in use
+ ---> System.Net.Sockets.SocketException (48): Address already in use
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-03-20 22:38:06.131 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-20 22:38:06.171 +01:00 [INF] HTTP GET /apple-touch-icon-precomposed.png responded 401 in 18.3916 ms
+2025-03-20 22:38:06.175 +01:00 [INF] HTTP GET /apple-touch-icon.png responded 401 in 1.4620 ms
+2025-03-20 22:38:33.331 +01:00 [INF] Fetching user: 08142233448
+2025-03-20 22:38:33.633 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-20 22:38:33.633 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-20 22:38:33.850 +01:00 [INF] Fetching user by phone: 08142233448
+2025-03-20 22:38:33.898 +01:00 [INF] Verifying user: amosdeji@example.com
+2025-03-20 22:38:33.933 +01:00 [INF] Generating token for user: amosdeji@example.com
+2025-03-20 22:38:34.042 +01:00 [INF] User logged in successfully: amosdeji@example.com
+2025-03-20 22:38:34.052 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 807.3035 ms
+2025-03-20 22:40:21.519 +01:00 [INF] HTTP POST /OloEcomm/Category responded 403 in 23.3140 ms
+2025-03-20 22:42:06.211 +01:00 [INF] User logged out successfully: amosdeji@example.com
+2025-03-20 22:42:06.211 +01:00 [INF] HTTP POST /OloEcomm/Account/Logout responded 200 in 57.4281 ms
+2025-03-20 22:43:27.915 +01:00 [INF] Fetching user: admin@gmail.com
+2025-03-20 22:43:27.928 +01:00 [INF] Verifying user: admin@gmail.com
+2025-03-20 22:43:27.978 +01:00 [INF] Generating token for user: admin@gmail.com
+2025-03-20 22:43:27.993 +01:00 [INF] User logged in successfully: admin@gmail.com
+2025-03-20 22:43:27.993 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 88.5631 ms
+2025-03-20 22:44:32.946 +01:00 [INF] Creating category: Men's Clothes
+2025-03-20 22:44:32.999 +01:00 [INF] HTTP POST /OloEcomm/Category responded 201 in 60.9278 ms
+2025-03-20 22:47:40.023 +01:00 [INF] Fetching user: 08142233448
+2025-03-20 22:47:40.030 +01:00 [INF] Fetching user by phone: 08142233448
+2025-03-20 22:47:40.034 +01:00 [INF] Verifying user: amosdeji@example.com
+2025-03-20 22:47:40.082 +01:00 [INF] Generating token for user: amosdeji@example.com
+2025-03-20 22:47:40.095 +01:00 [INF] User logged in successfully: amosdeji@example.com
+2025-03-20 22:47:40.095 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 73.0108 ms
+2025-03-20 22:49:27.786 +01:00 [INF] Creating product: Ashluxe Short
+2025-03-20 22:49:27.840 +01:00 [INF] HTTP POST /OloEcomm/Product/2 responded 201 in 88.5561 ms
+2025-03-20 22:51:17.208 +01:00 [INF] Creating product: Tecno Spark 20
+2025-03-20 22:51:17.216 +01:00 [INF] HTTP POST /OloEcomm/Product/1 responded 201 in 20.9713 ms
+2025-03-20 22:53:49.918 +01:00 [INF] Fetching user: 08012233448
+2025-03-20 22:53:49.932 +01:00 [INF] Fetching user by phone: 08012233448
+2025-03-20 22:53:49.936 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-20 22:53:49.981 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-20 22:53:50.000 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-20 22:53:50.001 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 87.1028 ms
+2025-03-20 22:54:00.362 +01:00 [INF] Fetching user: 08012233448
+2025-03-20 22:54:00.368 +01:00 [INF] Fetching user by phone: 08012233448
+2025-03-20 22:54:00.371 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-20 22:54:00.421 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-20 22:54:00.432 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-20 22:54:00.432 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 70.8089 ms
+2025-03-20 22:54:36.816 +01:00 [INF] HTTP POST /OloEcomm/Product/1 responded 403 in 0.7351 ms
+2025-03-20 22:54:49.990 +01:00 [INF] Fetching all reviews
+2025-03-20 22:54:50.026 +01:00 [INF] HTTP GET /OloEcomm/Review responded 200 in 43.0442 ms
+2025-03-20 22:55:22.562 +01:00 [INF] Fetching all products
+2025-03-20 22:55:22.578 +01:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-03-20 22:55:23.107 +01:00 [INF] HTTP GET /OloEcomm/Product responded 200 in 549.6780 ms
+2025-03-20 23:03:19.390 +01:00 [INF] Fetching user: 08012233448
+2025-03-20 23:03:19.414 +01:00 [INF] Fetching user by phone: 08012233448
+2025-03-20 23:03:19.416 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-20 23:03:19.457 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-20 23:03:19.469 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-20 23:03:19.470 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 80.2027 ms
+2025-03-20 23:05:08.381 +01:00 [INF] Creating review for product: 1002
+2025-03-20 23:05:08.404 +01:00 [INF] HTTP POST /OloEcomm/Review/1002 responded 201 in 43.7275 ms
+2025-03-20 23:05:24.468 +01:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-03-20 23:05:24.485 +01:00 [INF] Fetching product with id: 1002
+2025-03-20 23:05:24.485 +01:00 [INF] HTTP GET /OloEcomm/Product/1002 responded 200 in 34.3140 ms
+2025-03-20 23:06:09.305 +01:00 [INF] HTTP POST /OloEcomm/Review/1 responded 400 in 11.8093 ms
+2025-03-20 23:06:51.748 +01:00 [INF] HTTP POST /OloEcomm/Review/1 responded 400 in 1.5474 ms
+2025-03-20 23:08:19.485 +01:00 [INF] HTTP POST /OloEcomm/Review/1 responded 400 in 4.0595 ms
+2025-03-20 23:20:56.813 +01:00 [INF] Fetching user: 08012233448
+2025-03-20 23:20:56.838 +01:00 [INF] Fetching user by phone: 08012233448
+2025-03-20 23:20:56.840 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-20 23:20:56.883 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-20 23:20:56.897 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-20 23:20:56.898 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 87.4109 ms
+2025-03-20 23:21:48.795 +01:00 [INF] HTTP POST /OloEcomm/Review/1 responded 400 in 9.7860 ms
+2025-03-20 23:24:12.996 +01:00 [INF] Fetching user: 08012233448
+2025-03-20 23:24:13.002 +01:00 [INF] Fetching user by phone: 08012233448
+2025-03-20 23:24:13.004 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-20 23:24:13.046 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-20 23:24:13.058 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-20 23:24:13.058 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 63.7694 ms
+2025-03-20 23:25:10.989 +01:00 [INF] HTTP POST /OloEcomm/Review/1 responded 400 in 1.7089 ms
+oken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-03-20 23:23:23.948 +01:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5014: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Address already in use
+ ---> System.Net.Sockets.SocketException (48): Address already in use
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-03-20 23:27:01.901 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-20 23:27:02.009 +01:00 [INF] Fetching user: 08012233448
+2025-03-20 23:27:02.308 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-20 23:27:02.308 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-20 23:27:02.526 +01:00 [INF] Fetching user by phone: 08012233448
+2025-03-20 23:27:02.565 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-20 23:27:02.601 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-20 23:27:02.696 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-20 23:27:02.707 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 778.5256 ms
+2025-03-20 23:27:45.901 +01:00 [INF] Creating review for product: 1
+2025-03-20 23:27:45.957 +01:00 [INF] HTTP POST /OloEcomm/Review/1 responded 201 in 128.0772 ms
+2025-03-20 23:28:41.746 +01:00 [INF] Product added to cart: 1
+2025-03-20 23:28:41.746 +01:00 [INF] HTTP POST /OloEcomm/ShoppingCart/CreateMyCartItem/1 responded 200 in 94.0806 ms
+2025-03-20 23:28:54.322 +01:00 [INF] Product added to cart: 1002
+2025-03-20 23:28:54.322 +01:00 [INF] HTTP POST /OloEcomm/ShoppingCart/CreateMyCartItem/1002 responded 200 in 19.3321 ms
+2025-03-20 23:29:01.116 +01:00 [INF] User carts retrieved: malikadedeji@example.com
+2025-03-20 23:29:01.118 +01:00 [INF] HTTP GET /OloEcomm/ShoppingCart/GetMyCarts responded 200 in 42.3580 ms
+2025-03-20 23:29:21.100 +01:00 [INF] Fetching address for user: malikadedeji@example.com
+2025-03-20 23:29:21.132 +01:00 [INF] HTTP GET /OloEcomm/Address/GetMyAddresses responded 200 in 38.3952 ms
+2025-03-20 23:30:21.272 +01:00 [INF] Creating address for user: malikadedeji@example.com
+2025-03-20 23:30:21.302 +01:00 [INF] HTTP POST /OloEcomm/Address responded 201 in 40.9024 ms
+2025-03-20 23:30:28.523 +01:00 [INF] Fetching address for user: malikadedeji@example.com
+2025-03-20 23:30:28.532 +01:00 [INF] HTTP GET /OloEcomm/Address/GetMyAddresses responded 200 in 11.1828 ms
+2025-03-20 23:30:40.435 +01:00 [INF] Creating order for user: malikadedeji@example.com
+2025-03-20 23:30:40.534 +01:00 [INF] HTTP POST /OloEcomm/Order responded 201 in 112.1638 ms
+2025-03-20 23:31:07.911 +01:00 [INF] Payment initialized for user: malikadedeji@example.com
+2025-03-20 23:31:07.915 +01:00 [INF] HTTP POST /OloEcomm/Payments/InitializePayment/2 responded 200 in 991.1144 ms
+2025-03-20 23:31:50.191 +01:00 [ERR] Error verifying payment with reference: f7271bbf-4943-4c38-8412-b4b401e41708
+2025-03-20 23:31:50.192 +01:00 [INF] HTTP GET /OloEcomm/Payments/Verify/f7271bbf-4943-4c38-8412-b4b401e41708 responded 400 in 873.3739 ms
+2025-03-20 23:32:13.473 +01:00 [INF] Payment verified with reference: f7271bbf-4943-4c38-8412-b4b401e41708
+2025-03-20 23:32:13.473 +01:00 [INF] HTTP GET /OloEcomm/Payments/Verify/f7271bbf-4943-4c38-8412-b4b401e41708 responded 200 in 859.4696 ms

@@ -1,28 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\OloEcomm.csproj": {}
+    "/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/OloEcomm.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\OloEcomm.csproj": {
+    "/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/OloEcomm.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\OloEcomm.csproj",
+        "projectUniqueName": "/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/OloEcomm.csproj",
         "projectName": "OloEcomm",
-        "projectPath": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\OloEcomm.csproj",
-        "packagesPath": "C:\\Users\\DEJI\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\obj\\",
+        "projectPath": "/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/OloEcomm.csproj",
+        "packagesPath": "/Users/mac/.nuget/packages/",
+        "outputPath": "/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DEJI\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/mac/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -86,6 +83,26 @@
               "target": "Package",
               "version": "[1.1.1, )"
             },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Serilog.Enrichers.Environment": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            },
+            "Serilog.Enrichers.Thread": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "Serilog.Sinks.File": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Serilog.Sinks.MSSqlServer": {
+              "target": "Package",
+              "version": "[8.1.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.4.0, )"
@@ -110,7 +127,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

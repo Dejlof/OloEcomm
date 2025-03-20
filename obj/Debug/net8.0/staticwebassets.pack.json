@@ -1,31 +1,31 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\wwwroot\\images\\309e245f-470c-40f7-b466-c3f87fad8f82.jpg",
-      "PackagePath": "staticwebassets\\images\\309e245f-470c-40f7-b466-c3f87fad8f82.jpg"
+      "Id": "/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/wwwroot/images/309e245f-470c-40f7-b466-c3f87fad8f82.jpg",
+      "PackagePath": "staticwebassets/images/309e245f-470c-40f7-b466-c3f87fad8f82.jpg"
     },
     {
-      "Id": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\wwwroot\\images\\769f78e4-110f-4895-8506-e319f94b89e6.jpg",
-      "PackagePath": "staticwebassets\\images\\769f78e4-110f-4895-8506-e319f94b89e6.jpg"
+      "Id": "/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/wwwroot/images/769f78e4-110f-4895-8506-e319f94b89e6.jpg",
+      "PackagePath": "staticwebassets/images/769f78e4-110f-4895-8506-e319f94b89e6.jpg"
     },
     {
-      "Id": "C:\\Users\\DEJI\\source\\repos\\OloEcomm\\OloEcomm\\wwwroot\\images\\9ac829b1-85e2-4658-bc02-8b5f8f021f81.jpg",
-      "PackagePath": "staticwebassets\\images\\9ac829b1-85e2-4658-bc02-8b5f8f021f81.jpg"
+      "Id": "/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/wwwroot/images/9ac829b1-85e2-4658-bc02-8b5f8f021f81.jpg",
+      "PackagePath": "staticwebassets/images/9ac829b1-85e2-4658-bc02-8b5f8f021f81.jpg"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.OloEcomm.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.OloEcomm.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.OloEcomm.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.OloEcomm.props",
       "PackagePath": "build\\OloEcomm.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.OloEcomm.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.OloEcomm.props",
       "PackagePath": "buildMultiTargeting\\OloEcomm.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.OloEcomm.props",
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.OloEcomm.props",
       "PackagePath": "buildTransitive\\OloEcomm.props"
     }
   ],
