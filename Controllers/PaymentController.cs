@@ -16,10 +16,12 @@ namespace OloEcomm.Controllers
 
         private readonly IPayStackService _payStackService;
         private readonly IPaymentRepository _paymentRepository;
-        public PaymentController(IPayStackService payStackService, IPaymentRepository paymentRepository)
+        private readonly ILogger<PaymentController> _logger;
+        public PaymentController(IPayStackService payStackService, IPaymentRepository paymentRepository, ILogger<PaymentController> logger)
         {
             _payStackService = payStackService;
             _paymentRepository = paymentRepository;
+            _logger = logger;
         }
 
 
@@ -29,6 +31,7 @@ namespace OloEcomm.Controllers
         {
             if (!ModelState.IsValid)
             {
+                _logger.LogWarning("Invalid model state for payment request.");
                 string errorMessage = string.Join("|",
                     ModelState.Values.SelectMany(x => x.Errors).Select(
                         e => e.ErrorMessage));
@@ -39,7 +42,12 @@ namespace OloEcomm.Controllers
 
            
             var payment = await _payStackService.InitializePayment(orderId,username);
-          
+            if (payment == null)
+            {
+                _logger.LogError("Error initializing payment for user: {User}", username);
+                return BadRequest("Payment Not Sucessful");
+            }
+            _logger.LogInformation("Payment initialized for user: {User}", username);
             return Ok(payment.ToPaymentDto());
 
         }
@@ -49,6 +57,7 @@ namespace OloEcomm.Controllers
         {
             if (!ModelState.IsValid)
             {
+                _logger.LogWarning("Invalid model state for payment verification request.");
                 string errorMessage = string.Join("|",
                     ModelState.Values.SelectMany(x => x.Errors).Select(
                         e => e.ErrorMessage));
@@ -56,6 +65,12 @@ namespace OloEcomm.Controllers
             }
 
             var isVerified = await _payStackService.VerifyPayment(reference);
+            if (!isVerified)
+            {
+                _logger.LogError("Error verifying payment with reference: {Reference}", reference);
+                return BadRequest("Payment Not Sucessful");
+            }
+            _logger.LogInformation("Payment verified with reference: {Reference}", reference);
             return isVerified ? Ok("Payment Successful") : BadRequest("Payment Not Sucessful");
 
         }
@@ -65,6 +80,7 @@ namespace OloEcomm.Controllers
         {
             if (!ModelState.IsValid)
             {
+                _logger.LogWarning("Invalid model state for payment request.");
                 string errorMessage = string.Join("|",
                     ModelState.Values.SelectMany(x => x.Errors).Select(
                         e => e.ErrorMessage));
@@ -73,18 +89,22 @@ namespace OloEcomm.Controllers
             var payment = await _paymentRepository.GetPaymentByReference(reference);
             if (payment == null)
             {
+                _logger.LogWarning("Payment with reference: {Reference} not found.", reference);
                 return NotFound("Payment Not Found");
             }
 
+             _logger.LogInformation("Fetching payment with reference: {Reference}", reference);
             return Ok(payment.ToPaymentDto());
 
         }
 
         [HttpGet("GetPaymentsByUserName/{username}")]
+        [Authorize(Roles= "Admin")]
         public async Task<IActionResult> GetPaymentsByUserName([FromRoute] string username)
         {
             if (!ModelState.IsValid)
             {
+                _logger.LogWarning("Invalid model state for payment request.");
                 string errorMessage = string.Join("|",
                     ModelState.Values.SelectMany(x => x.Errors).Select(
                         e => e.ErrorMessage));
@@ -93,8 +113,11 @@ namespace OloEcomm.Controllers
             var payments = await _paymentRepository.GetPaymentsByUsers(username);
             if (payments == null)
             {
+                _logger.LogWarning("Payments not found for user: {User}.", username);
                 return NotFound("Payments Not Found");
             }
+
+            _logger.LogInformation("Fetching payments for user: {User}", username);
              var paymentsDto = payments.Select(x => x.ToPaymentDto()).ToList();
             return Ok(paymentsDto);
         }

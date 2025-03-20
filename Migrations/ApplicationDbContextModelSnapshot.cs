@@ -304,20 +304,6 @@ namespace OloEcomm.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("PaymentDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PaymentMethod")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PaymentStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("TransactionId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
@@ -354,6 +340,9 @@ namespace OloEcomm.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("OrderId");
@@ -361,6 +350,57 @@ namespace OloEcomm.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("OloEcomm.Model.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AccessCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("AuthorizationUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PaidBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("PaymentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PaymentStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Reference")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("Payments");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Product", b =>
@@ -554,7 +594,7 @@ namespace OloEcomm.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "03300140-0e58-472b-91d9-ca3748fbce18",
+                            ConcurrencyStamp = "55a2b7d6-ec3b-414d-a904-d1ac5c901c75",
                             Email = "admin@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Admin",
@@ -562,11 +602,11 @@ namespace OloEcomm.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENbGAkZAecSRmKSDDyaETn1zZeOkKPBuQru3t6TSWqm3FQmS9+W4b5NN4oCWxdv7wA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDEoYrB8r9I4MIyGNxUJTNWICwD1HzfWVDs2z2w8peJg1T3eB17shdazokDd6DFjVQ==",
                             PhoneNumber = "133-476-7890",
                             PhoneNumberConfirmed = false,
                             Role = "Admin",
-                            SecurityStamp = "d4a4486c-8685-42dc-bc72-494e62d69a63",
+                            SecurityStamp = "70147a46-d23f-4bb7-ae2f-de07d88d4adb",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         });
@@ -717,6 +757,17 @@ namespace OloEcomm.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("OloEcomm.Model.Payment", b =>
+                {
+                    b.HasOne("OloEcomm.Model.Order", "Order")
+                        .WithMany()
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Product", b =>
