@@ -13,7 +13,7 @@ namespace OloEcomm.Mappers
                 Id = reviewModel.Id,
                 Comment = reviewModel.Comment,
                 Rating = reviewModel.Rating,
-                CreatedBy = reviewModel.User?.UserName,
+                CreatedBy = reviewModel.CreatedBy,
                 ReviewDate = reviewModel.ReviewDate,
                 ProductId = reviewModel.ProductId,
             };
@@ -26,6 +26,7 @@ namespace OloEcomm.Mappers
                 Comment = createReviewDto.Comment,
                  ProductId = productId,
                  Rating = rating,
+
 
             };
         }

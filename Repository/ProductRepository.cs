@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OloEcomm.Data;
 using OloEcomm.Dtos.Product;
+using OloEcomm.Helpers;
 using OloEcomm.Interface;
 using OloEcomm.Model;
 
@@ -53,17 +54,33 @@ namespace OloEcomm.Repository
         }
 
 
-        public async Task<List<Product>> GetAllProductsAsync()
+        public async Task<List<Product>> GetAllProductsAsync(ProductQuery productQuery)
         {
-            return await _context.Products
+            var products = _context.Products
      .Include(p => p.ProductImages)
      .Include(p => p.Reviews)
      .Include(p => p.User) 
-     .ToListAsync();
+    .AsQueryable();
 
+        if(!string.IsNullOrEmpty(productQuery.Search))
+        {
+            products = products.Where(s => s.Name.Contains(productQuery.Search) || s.Description.Contains(productQuery.Search));
         }
 
+        if(productQuery.MinPrice.HasValue)
+        {
+            products = products.Where(s => s.Price >= productQuery.MinPrice);
 
+        }
+        
+        
+        if(productQuery.MaxPrice.HasValue)
+        {
+            products = products.Where(s => s.Price <= productQuery.MaxPrice);
+        }
+        return await products.ToListAsync();
+        }
+        
         public async Task<List<Product>> GetUserProductsAsync(string userName)
         {
             return await _context.Products

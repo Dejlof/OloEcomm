@@ -15,7 +15,7 @@ namespace OloEcomm.Mappers
                 QuantityInStock = productModel.QuantityInStock,
                 Price = productModel.Price,
                 DiscountPrice = productModel.DiscountPrice,
-                CreatedBy = productModel.User?.UserName,
+                CreatedBy = productModel.CreatedBy,
                 CreatedDate = productModel.CreatedDate,
                 CategoryId = productModel.CategoryId,
                 Reviews = productModel.Reviews.Select(s => s.ToReviewDto()).ToList(),
