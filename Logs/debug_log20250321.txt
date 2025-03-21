@@ -1,0 +1,9 @@
+2025-03-21 10:01:32.274 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-21 10:01:32.382 +01:00 [INF] Fetching user: string
+2025-03-21 10:01:32.699 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Order'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-21 10:01:32.699 +01:00 [WRN] No store type was specified for the decimal property 'Amount' on entity type 'Payment'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-03-21 10:01:32.927 +01:00 [WRN] User not found: string
+2025-03-21 10:01:32.930 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 404 in 660.8656 ms
+2025-03-21 10:01:47.671 +01:00 [INF] HTTP POST /OloEcomm/Account/Register responded 400 in 19.3802 ms
+2025-03-21 10:02:05.599 +01:00 [INF] HTTP GET /OloEcomm/Address/GetMyAddresses responded 401 in 7.0274 ms
+2025-03-21 10:02:23.961 +01:00 [INF] HTTP POST /OloEcomm/Address responded 401 in 1.3180 ms

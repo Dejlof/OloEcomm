@@ -14,6 +14,7 @@ using OloEcomm.Services;
 using Serilog;
 using Serilog.Sinks.MSSqlServer;
 using System.Collections.ObjectModel;
+using OloEcomm.Middlewares;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -178,9 +179,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseSerilogRequestLogging(); 
+
 app.UseHttpsRedirection();
 
-app.UseSerilogRequestLogging(); 
+app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthentication();
 
