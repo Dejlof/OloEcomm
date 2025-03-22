@@ -91,7 +91,8 @@ namespace OloEcomm.Repository
                 products = products.OrderByDescending(s => s.CreatedDate);
                 break;
         }
-        return await products.ToListAsync();
+        var skipNumber = (productQuery.PageNumber - 1) * productQuery.PageSize;
+        return await products.Skip(skipNumber).Take(productQuery.PageSize).ToListAsync();
         }
         
         public async Task<List<Product>> GetUserProductsAsync(string userName)
