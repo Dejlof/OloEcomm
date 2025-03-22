@@ -72,7 +72,7 @@ namespace OloEcomm.Repository
 
         public async Task<IEnumerable<Order>> GetOrdersByUsersAsync(string username)
         {
-            return await _context.Orders.Include(s => s.OrderDetails).Where(s => s.OrderedBy == username).ToListAsync();
+            return await _context.Orders.Include(s => s.OrderDetails).Where(s => s.OrderedBy == username).OrderByDescending(s=>s.OrderDate).ToListAsync();
         }
 
         

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OloEcomm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f5b45fba1bf2f85d3d5301e15d19b1873f328d7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5121c43356bb18361993dceb25d14a0bc1c5572b")]
 [assembly: System.Reflection.AssemblyProductAttribute("OloEcomm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OloEcomm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

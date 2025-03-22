@@ -25,7 +25,7 @@ namespace OloEcomm.Repository
 
         public async Task<IEnumerable<Payment>> GetPaymentsByUsers(string username)
         {
-            var paymentForUser = await _context.Payments.Where(s=> s.PaidBy == username).ToListAsync();
+            var paymentForUser = await _context.Payments.Where(s=> s.PaidBy == username).OrderByDescending(s=>s.PaymentStatus).ToListAsync();
             if (paymentForUser == null) 
             {
                 return null;
