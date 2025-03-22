@@ -78,6 +78,19 @@ namespace OloEcomm.Repository
         {
             products = products.Where(s => s.Price <= productQuery.MaxPrice);
         }
+
+        switch (!string.IsNullOrEmpty(productQuery.SortBy) ? productQuery.SortBy.ToLower() : null)
+        {
+            case "price":
+                products = productQuery.IsSortDescending ? products.OrderByDescending(s => s.Price) : products.OrderBy(s => s.Price);
+                break;
+            case "name":
+                products = productQuery.IsSortDescending ? products.OrderByDescending(s => s.Name) : products.OrderBy(s => s.Name);
+                break;
+            default:
+                products = products.OrderByDescending(s => s.CreatedDate);
+                break;
+        }
         return await products.ToListAsync();
         }
         
@@ -133,6 +146,17 @@ namespace OloEcomm.Repository
 
             await _context.SaveChangesAsync();
             return existingProduct;
+        }
+
+        public async Task<List<Product>> GetPopularProductsAsync()
+        {
+            return await _context.Products
+            .Include(p => p.ProductImages)
+            .Include(p => p.Reviews)
+            .Include(p => p.User)
+            .OrderByDescending(s => s.Reviews.Count)
+            .Take(5)
+            .ToListAsync();
         }
     }
 }

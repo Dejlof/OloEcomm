@@ -31,6 +31,7 @@ namespace OloEcomm.Controllers
 
     
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetProducts([FromQuery] ProductQuery productQuery)
         {
             _logger.LogInformation("Fetching all products");
@@ -61,6 +62,7 @@ namespace OloEcomm.Controllers
 
         
         [HttpGet("GetVendorProducts")]
+        [AllowAnonymous]
         
         public async Task<IActionResult> GetUsersProduct(string username) 
         {
@@ -79,6 +81,7 @@ namespace OloEcomm.Controllers
 
         
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetById(int id)
         {
             if (!ModelState.IsValid)
@@ -125,6 +128,18 @@ namespace OloEcomm.Controllers
 
             return CreatedAtAction(nameof(GetById), new { id = categoryId }, productModel.ToProductDto());
         }
+
+   [HttpGet("GetPopularProducts")]
+   [AllowAnonymous]
+        public async Task<IActionResult> GetPopularProducts()
+        {
+            var products = await _productReposity.GetPopularProductsAsync();
+            var productsDto = products.Select(s => s.ToProductDto()).ToList();
+            _logger.LogInformation("Fetching popular products");
+            return Ok(productsDto);
+        }
+
+
 
         
         [HttpPut("{id:int}")]

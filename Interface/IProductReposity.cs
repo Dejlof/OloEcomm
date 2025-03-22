@@ -21,5 +21,7 @@ namespace OloEcomm.Interface
        Task<bool> productExists (int id);
 
         Task<Product> productExist(int id);
+
+        Task<List<Product>> GetPopularProductsAsync();
     }
 }
