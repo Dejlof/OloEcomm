@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OloEcomm.Data;
 using OloEcomm.Dtos.Product;
+using OloEcomm.Helpers;
 using OloEcomm.Interface;
 using OloEcomm.Model;
 
@@ -53,17 +54,47 @@ namespace OloEcomm.Repository
         }
 
 
-        public async Task<List<Product>> GetAllProductsAsync()
+        public async Task<List<Product>> GetAllProductsAsync(ProductQuery productQuery)
         {
-            return await _context.Products
+            var products = _context.Products
      .Include(p => p.ProductImages)
      .Include(p => p.Reviews)
      .Include(p => p.User) 
-     .ToListAsync();
+    .AsQueryable();
 
+        if(!string.IsNullOrEmpty(productQuery.Search))
+        {
+            products = products.Where(s => s.Name.Contains(productQuery.Search) || s.Description.Contains(productQuery.Search));
         }
 
+        if(productQuery.MinPrice.HasValue)
+        {
+            products = products.Where(s => s.Price >= productQuery.MinPrice);
 
+        }
+        
+        
+        if(productQuery.MaxPrice.HasValue)
+        {
+            products = products.Where(s => s.Price <= productQuery.MaxPrice);
+        }
+
+        switch (!string.IsNullOrEmpty(productQuery.SortBy) ? productQuery.SortBy.ToLower() : null)
+        {
+            case "price":
+                products = productQuery.IsSortDescending ? products.OrderByDescending(s => s.Price) : products.OrderBy(s => s.Price);
+                break;
+            case "name":
+                products = productQuery.IsSortDescending ? products.OrderByDescending(s => s.Name) : products.OrderBy(s => s.Name);
+                break;
+            default:
+                products = products.OrderByDescending(s => s.CreatedDate);
+                break;
+        }
+        var skipNumber = (productQuery.PageNumber - 1) * productQuery.PageSize;
+        return await products.Skip(skipNumber).Take(productQuery.PageSize).ToListAsync();
+        }
+        
         public async Task<List<Product>> GetUserProductsAsync(string userName)
         {
             return await _context.Products
@@ -116,6 +147,17 @@ namespace OloEcomm.Repository
 
             await _context.SaveChangesAsync();
             return existingProduct;
+        }
+
+        public async Task<List<Product>> GetPopularProductsAsync()
+        {
+            return await _context.Products
+            .Include(p => p.ProductImages)
+            .Include(p => p.Reviews)
+            .Include(p => p.User)
+            .OrderByDescending(s => s.Reviews.Count)
+            .Take(5)
+            .ToListAsync();
         }
     }
 }

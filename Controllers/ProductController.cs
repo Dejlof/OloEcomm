@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using OloEcomm.Data;
 using OloEcomm.Dtos.Product;
 using OloEcomm.Extensions;
+using OloEcomm.Helpers;
 using OloEcomm.Interface;
 using OloEcomm.Mappers;
 using OloEcomm.Model;
@@ -30,10 +31,11 @@ namespace OloEcomm.Controllers
 
     
         [HttpGet]
-        public async Task<IActionResult> GetProducts()
+        [AllowAnonymous]
+        public async Task<IActionResult> GetProducts([FromQuery] ProductQuery productQuery)
         {
             _logger.LogInformation("Fetching all products");
-            var products = await _productReposity.GetAllProductsAsync();
+            var products = await _productReposity.GetAllProductsAsync(productQuery);
             var productsDto = products.Select(s => s.ToProductDto()).ToList();
             return Ok(productsDto);
 
@@ -60,6 +62,7 @@ namespace OloEcomm.Controllers
 
         
         [HttpGet("GetVendorProducts")]
+        [AllowAnonymous]
         
         public async Task<IActionResult> GetUsersProduct(string username) 
         {
@@ -78,6 +81,7 @@ namespace OloEcomm.Controllers
 
         
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetById(int id)
         {
             if (!ModelState.IsValid)
@@ -117,12 +121,25 @@ namespace OloEcomm.Controllers
 
             var productModel = productDto.CreateProductDto(categoryId);
             productModel.UserId = appUser.Id;
+            productModel.CreatedBy = appUser.UserName;
 
             _logger.LogInformation("Creating product: {Product}", productModel.Name);
             await _productReposity.CreateProductAsync(productModel);
 
             return CreatedAtAction(nameof(GetById), new { id = categoryId }, productModel.ToProductDto());
         }
+
+   [HttpGet("GetPopularProducts")]
+   [AllowAnonymous]
+        public async Task<IActionResult> GetPopularProducts()
+        {
+            var products = await _productReposity.GetPopularProductsAsync();
+            var productsDto = products.Select(s => s.ToProductDto()).ToList();
+            _logger.LogInformation("Fetching popular products");
+            return Ok(productsDto);
+        }
+
+
 
         
         [HttpPut("{id:int}")]

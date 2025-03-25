@@ -52,12 +52,12 @@ namespace OloEcomm.Repository
 
         public async Task<List<Review>> GetAllAsync()
         {
-            return await _context.Reviews.Include(r=>r.User).ToListAsync();
+            return await _context.Reviews.Include(r=>r.User).OrderByDescending(s=>s.ReviewDate).ToListAsync();
         }
 
         public async Task<List<Review>> GetUserCommentAsync(string username)
         {
-            return await _context.Reviews.Include(r => r.User).Where(s => s.User.UserName == username).ToListAsync();
+            return await _context.Reviews.Include(r => r.User).Where(s => s.User.UserName == username).OrderByDescending(s=>s.ReviewDate).ToListAsync();
         }
 
         public async Task<Review?> GetByIdAsync(int id)

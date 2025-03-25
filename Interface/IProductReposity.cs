@@ -1,11 +1,12 @@
 ﻿using OloEcomm.Dtos.Product;
+using OloEcomm.Helpers;
 using OloEcomm.Model;
 
 namespace OloEcomm.Interface
 {
     public interface IProductReposity
     {
-        Task<List<Product>> GetAllProductsAsync();
+        Task<List<Product>> GetAllProductsAsync(ProductQuery productQuery);
         Task<List<Product>> GetUserProductsAsync(string userName);
 
         Task<Product?> GetById (int id);
@@ -20,5 +21,7 @@ namespace OloEcomm.Interface
        Task<bool> productExists (int id);
 
         Task<Product> productExist(int id);
+
+        Task<List<Product>> GetPopularProductsAsync();
     }
 }

@@ -35,7 +35,7 @@ namespace OloEcomm.Repository
 
         public async Task<List<Wishlist>> GetAllAsync(string username)
         {
-            return await _context.Wishlist.Include(r => r.User).Where(s => s.User.UserName == username).ToListAsync();
+            return await _context.Wishlist.Include(r => r.User).Where(s => s.User.UserName == username).OrderByDescending(s=>s.CreatedDate).ToListAsync();
         }
 
         public async Task<Wishlist> GetByIdAsync(int id)
