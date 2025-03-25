@@ -221,7 +221,7 @@ namespace OloEcomm.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("OloEcomm.Model.CartItem", b =>
@@ -255,7 +255,7 @@ namespace OloEcomm.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CartItems");
+                    b.ToTable("CartItems", (string)null);
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Category", b =>
@@ -276,7 +276,7 @@ namespace OloEcomm.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Order", b =>
@@ -313,7 +313,7 @@ namespace OloEcomm.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("OloEcomm.Model.OrderDetail", b =>
@@ -349,7 +349,7 @@ namespace OloEcomm.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails");
+                    b.ToTable("OrderDetails", (string)null);
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Payment", b =>
@@ -400,7 +400,7 @@ namespace OloEcomm.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Product", b =>
@@ -448,7 +448,7 @@ namespace OloEcomm.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("OloEcomm.Model.ProductImage", b =>
@@ -470,7 +470,7 @@ namespace OloEcomm.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("ProductImages");
+                    b.ToTable("ProductImages", (string)null);
                 });
 
             modelBuilder.Entity("OloEcomm.Model.Review", b =>
@@ -507,7 +507,7 @@ namespace OloEcomm.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Reviews", (string)null);
                 });
 
             modelBuilder.Entity("OloEcomm.Model.User", b =>
@@ -643,7 +643,7 @@ namespace OloEcomm.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Wishlist");
+                    b.ToTable("Wishlist", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

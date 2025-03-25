@@ -17,6 +17,8 @@ namespace OloEcomm.Model
         public ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
         public decimal Amount { get; set; }
 
+       
+
      
        
 

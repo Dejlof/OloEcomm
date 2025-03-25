@@ -15,5 +15,11 @@ namespace OloEcomm.Dtos.OrderDetails
         public decimal TotalPrice { get; set; }
        
         public string ProductName { get; set; } = string.Empty;
+
+         public int? ShipmentId { get; set; }
+
+        public string OrderStatus { get; set; } 
+
+        public int ProductId { get; set; }
     }
 }

@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using OloEcomm.Data;
 using OloEcomm.Data.Enum;
 using OloEcomm.Dtos.Account;
+using OloEcomm.Extensions;
 using OloEcomm.Interface;
 using OloEcomm.Model;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +23,7 @@ namespace OloEcomm.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly ILogger<AccountController> _logger;
+        private readonly ApplicationDbContext   _context;
         public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, ITokenService tokenService, ILogger<AccountController> logger)
         {
             _signInManager = signInManager;
@@ -388,5 +391,50 @@ namespace OloEcomm.Controllers
             return Ok($"{deletedUser} has been deleted");
 
         }
+
+        [HttpPost("SwitchRoles")]
+        public async Task<IActionResult> SwitchRoles([FromQuery] Role role)
+        {
+             if (!ModelState.IsValid)
+         {
+        _logger.LogWarning("Invalid model state for SwitchRoles.");
+        string errorMessage = string.Join("|", ModelState.Values.SelectMany(x => x.Errors).Select(e => e.ErrorMessage));
+        return BadRequest(errorMessage); // Return BadRequest instead of throwing an exception
+          }
+
+              var getUser = User.GetUsername();
+           var appUser = await _userManager.FindByNameAsync(getUser);
+
+              if (appUser == null)
+            {
+        _logger.LogWarning("User not found: {User}", getUser);
+        return NotFound("User not found");
+              }
+
+            try
+          {
+        
+        var currentRoles = await _userManager.GetRolesAsync(appUser);
+
+        await _userManager.RemoveFromRolesAsync(appUser, currentRoles);
+
+        await _userManager.AddToRoleAsync(appUser, role.ToString());
+            appUser.Role = role.ToString();
+       
+        await _userManager.UpdateAsync(appUser);
+
+     
+
+
+        _logger.LogInformation("User role updated successfully: {User}", appUser.UserName);
+        return Ok($"User {appUser.UserName} role has been updated to {role}");
+            }
+           catch (Exception ex)
+         {
+        _logger.LogError("An error occurred while switching roles: {Error}", ex.Message);
+        return StatusCode(500, "An error occurred while updating the role.");
+           }
+         }
+
+        }
     }
-}

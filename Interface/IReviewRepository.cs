@@ -9,7 +9,7 @@ namespace OloEcomm.Interface
         Task<Review?> GetByIdAsync(int id);
         Task<List<Review>> GetUserCommentAsync(string username);
 
-        Task <Review> CreateReviewAsync (Review review);    
+        Task <Review> CreateReviewAsync (Review review, string username);    
 
         Task <Review?> UpdateReviewAsync (int id, Review reviewModel);
 
