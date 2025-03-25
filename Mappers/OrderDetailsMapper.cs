@@ -13,6 +13,9 @@ namespace OloEcomm.Mappers
                 Price = orderDetail.Price,
                 TotalPrice = orderDetail.TotalPrice,
                 ProductName = orderDetail.ProductName,
+                ShipmentId = orderDetail.ShipmentId,
+                OrderStatus = orderDetail.OrderStatus,
+                ProductId = orderDetail.ProductId
             };
         }
        

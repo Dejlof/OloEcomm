@@ -128,8 +128,11 @@ namespace OloEcomm.Services
                             {
                                 throw new Exception($"Not enough stock for {product.Name}");
                             }
+                            cartItem.OrderStatus = OrderStatus.Processing.ToString();
                         }
                     }
+
+                    
 
                     await _dbContext.SaveChangesAsync();
                     return true;

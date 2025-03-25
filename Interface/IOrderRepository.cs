@@ -11,6 +11,11 @@ namespace OloEcomm.Interface
 
         Task<Order?> GetOrderByIdAsync(int orderId);
 
+        Task<OrderDetail?> ShipProductOrderAsync(int orderDetailId);
+
+        Task<OrderDetail?> DeliverProductOrderAsync(int orderDetailId);
+
+        Task<OrderDetail?> CancelProductOrderAsync(int orderDetailId); 
         
 
    }

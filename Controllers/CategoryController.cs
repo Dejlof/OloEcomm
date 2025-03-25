@@ -22,7 +22,7 @@ namespace OloEcomm.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+      [AllowAnonymous]
         public async Task<IActionResult> GetAll() 
         {
             _logger.LogInformation("Fetching all categories");
@@ -34,7 +34,7 @@ namespace OloEcomm.Controllers
 
 
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
+      [AllowAnonymous]
         public async Task <IActionResult> GetById(int id) 
         {
             if (!ModelState.IsValid) 

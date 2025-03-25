@@ -23,5 +23,11 @@ namespace OloEcomm.Model
         public Product Product { get; set; }
 
         public string ProductName { get; set; } = string.Empty;
+
+         public int? ShipmentId { get; set; }
+
+        public string OrderStatus { get; set; } 
+
+        public Shipment Shipment { get; set; }
     }
 }

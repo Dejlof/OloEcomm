@@ -1,0 +1,45 @@
+2025-03-24 11:08:59.805 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-24 11:08:59.928 +01:00 [INF] Fetching user: admin@gmail.com
+2025-03-24 11:09:00.501 +01:00 [INF] Verifying user: admin@gmail.com
+2025-03-24 11:09:00.537 +01:00 [INF] Generating token for user: admin@gmail.com
+2025-03-24 11:09:00.651 +01:00 [INF] User logged in successfully: admin@gmail.com
+2025-03-24 11:09:00.662 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 860.4815 ms
+2025-03-24 11:20:38.593 +01:00 [INF] Fetching address for user: admin@gmail.com
+2025-03-24 11:20:38.658 +01:00 [INF] HTTP GET /OloEcomm/Address/GetMyAddresses responded 200 in 97.9989 ms
+2025-03-24 11:40:52.264 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-24 11:40:52.305 +01:00 [INF] HTTP POST /OloEcomm/Account/SwitchRoles responded 401 in 46.1825 ms
+2025-03-24 11:42:33.114 +01:00 [INF] Fetching user: 08012233448
+2025-03-24 11:42:33.625 +01:00 [INF] Fetching user by phone: 08012233448
+2025-03-24 11:42:33.668 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-24 11:42:33.703 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-24 11:42:33.796 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-24 11:42:33.805 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 766.5540 ms
+2025-03-24 11:43:05.592 +01:00 [INF] User role updated successfully: malikadedeji@example.com
+2025-03-24 11:43:05.594 +01:00 [INF] HTTP POST /OloEcomm/Account/SwitchRoles responded 200 in 166.0755 ms
+2025-03-24 15:44:53.429 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-24 15:44:53.537 +01:00 [INF] Fetching user: 08142233448
+2025-03-24 15:44:54.068 +01:00 [INF] Fetching user by phone: 08142233448
+2025-03-24 15:44:54.112 +01:00 [INF] Verifying user: amosdeji@example.com
+2025-03-24 15:44:54.148 +01:00 [INF] Generating token for user: amosdeji@example.com
+2025-03-24 15:44:54.248 +01:00 [INF] User logged in successfully: amosdeji@example.com
+2025-03-24 15:44:54.259 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 833.8463 ms
+2025-03-24 15:45:17.992 +01:00 [INF] User role updated successfully: amosdeji@example.com
+2025-03-24 15:45:17.994 +01:00 [INF] HTTP POST /OloEcomm/Account/SwitchRoles responded 200 in 158.6240 ms
+2025-03-24 15:45:46.461 +01:00 [INF] User role updated successfully: amosdeji@example.com
+2025-03-24 15:45:46.461 +01:00 [INF] HTTP POST /OloEcomm/Account/SwitchRoles responded 200 in 55.2082 ms
+2025-03-24 15:46:30.607 +01:00 [INF] Fetching user: 08012233448
+2025-03-24 15:46:30.613 +01:00 [INF] Fetching user by phone: 08012233448
+2025-03-24 15:46:30.617 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-24 15:46:30.665 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-24 15:46:30.679 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-24 15:46:30.680 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 79.8831 ms
+2025-03-24 15:46:51.201 +01:00 [INF] User role updated successfully: malikadedeji@example.com
+2025-03-24 15:46:51.201 +01:00 [INF] HTTP POST /OloEcomm/Account/SwitchRoles responded 200 in 36.0062 ms
+2025-03-24 15:53:56.774 +01:00 [INF] Fetching wishlist for user: malikadedeji@example.com
+2025-03-24 15:53:56.840 +01:00 [INF] HTTP GET /OloEcomm/Wishlist responded 200 in 69.6608 ms
+2025-03-24 15:57:59.901 +01:00 [INF] Fetching user: admin@gmail.com
+2025-03-24 15:57:59.903 +01:00 [INF] HTTP GET /OloEcomm/Account/GetByUser responded 200 in 13.7155 ms
+2025-03-24 15:59:01.951 +01:00 [INF] Fetching user: malikadedeji@example.com
+2025-03-24 15:59:01.951 +01:00 [INF] HTTP GET /OloEcomm/Account/GetByUser responded 200 in 6.0258 ms
+2025-03-24 15:59:06.846 +01:00 [INF] Fetching user: malikadedeji@example.com
+2025-03-24 15:59:06.846 +01:00 [INF] HTTP GET /OloEcomm/Account/GetByUser responded 200 in 8.8175 ms

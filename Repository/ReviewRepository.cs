@@ -15,8 +15,25 @@ namespace OloEcomm.Repository
         {
         _context = context;
         }   
-        public async Task<Review> CreateReviewAsync(Review review)
+        public async Task<Review> CreateReviewAsync(Review review ,string username)
         {
+            var order = await _context.Orders.Include(s=>s.OrderDetails).FirstOrDefaultAsync(x=>x.OrderedBy  == username && x.OrderDetails.Any(s=>s.ProductId == review.ProductId));
+            if (order == null)
+            {
+                throw new InvalidOperationException("You have not purchased this product.");
+            }
+
+            if(order.OrderDetails.Any(s=> s.OrderStatus != "Delivered"))
+            {
+                throw new InvalidOperationException("You can only review a product after it has been delivered.");
+            }
+            var reviewModel = new Review
+            {
+                ProductId = review.ProductId,
+                Comment = review.Comment,
+                Rating = review.Rating,
+                ReviewDate = review.ReviewDate,
+            };
             await _context.Reviews.AddAsync(review);
             await _context.SaveChangesAsync();
             return review;

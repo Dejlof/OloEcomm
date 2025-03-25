@@ -122,7 +122,7 @@ namespace OloEcomm.Controllers
             reviewModel.CreatedBy = appUser.UserName ?? throw new InvalidOperationException("UserName cannot be null");
 
            _logger.LogInformation("Creating review for product: {Product}", productId);
-            await _reviewRepository.CreateReviewAsync(reviewModel);
+            await _reviewRepository.CreateReviewAsync(reviewModel, user);
 
             return CreatedAtAction(nameof(GetById), new {id  = productId}, reviewModel.ToReviewDto());
         }

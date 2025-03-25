@@ -70,6 +70,7 @@ namespace OloEcomm.Controllers
                 _logger.LogError("Error verifying payment with reference: {Reference}", reference);
                 return BadRequest("Payment Not Sucessful");
             }
+            
             _logger.LogInformation("Payment verified with reference: {Reference}", reference);
             return isVerified ? Ok("Payment Successful") : BadRequest("Payment Not Sucessful");
 

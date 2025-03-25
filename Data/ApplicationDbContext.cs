@@ -30,9 +30,29 @@ namespace OloEcomm.Data
 
         public DbSet<Payment> Payments { get; set; }
 
+        public DbSet<Shipment> Shipments { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
   {
       base.OnModelCreating(builder);
+
+        builder.Entity<OrderDetail>()
+        .HasOne(od => od.Shipment)
+        .WithOne(s => s.OrderDetail)
+        .HasForeignKey<Shipment>(s => s.OrderDetailId)
+        .OnDelete(DeleteBehavior.Cascade); 
+
+        builder.Entity<Order>()
+        .Property(o => o.Amount)
+        .HasColumnType("decimal(18,4)"); 
+
+    builder.Entity<Payment>()
+        .Property(p => p.Amount)
+        .HasColumnType("decimal(18,4)"); 
+
+ builder.Entity<Shipment>()
+        .Property(s => s.DeliveredDate)
+        .HasColumnType("datetime2"); 
 
 
       List<IdentityRole> roles = new List<IdentityRole>
@@ -88,6 +108,7 @@ namespace OloEcomm.Data
             builder.Entity<User>().HasData(admin);
             builder.Entity<IdentityUserRole<string>>().HasData(adminUserRole);
 
+            
         }
 
     }

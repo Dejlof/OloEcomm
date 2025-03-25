@@ -142,6 +142,74 @@ namespace OloEcomm.Controllers
 
         }
 
+      [HttpPost("{orderDetailId}/ShipProductOrdered")]
+       [Authorize(Roles="Admin, Vendor")]
+        public async Task<IActionResult> ShipOrder(int orderDetailId)
+        {
+            if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("Invalid model state for Product Ordered request.");
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                _logger.LogInformation("Shipping order with id: {Id}", orderDetailId);
+                var orderDetail = await _orderRepository.ShipProductOrderAsync(orderDetailId);
+                return Ok(orderDetail.ToOrderDetailsDto());
+            }
+            catch (InvalidOperationException ex)
+            {
+                _logger.LogError("Error shipping order with id: {Id}. Error: {Error}", orderDetailId, ex.Message);
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        
+        [HttpPost("{orderDetailId}/DeliverProductOrdered")]
+        [Authorize(Roles="Admin, Vendor")]
+        public async Task<IActionResult> DeliverOrder(int orderDetailId)
+        {
+            if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("Invalid model state for productOrdered request.");
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                _logger.LogInformation("Delivering order with id: {Id}", orderDetailId);
+                var orderDetail = await _orderRepository.DeliverProductOrderAsync(orderDetailId);
+                return Ok(orderDetail.ToOrderDetailsDto());
+            }
+            catch (InvalidOperationException ex)
+            {
+                _logger.LogError("Error delivering order with id: {Id}. Error: {Error}", orderDetailId, ex.Message);
+                return BadRequest(new { message = ex.Message });
+            }
 
     }
-}
+
+    [HttpPost("{orderDetailId}/CancelProductOrdered")]
+    [Authorize(Roles="Admin, Vendor")]
+    public async Task<IActionResult> CancelOrder(int orderDetailId)
+    {
+        if (!ModelState.IsValid)
+        {
+            _logger.LogWarning("Invalid model state for order request.");
+            return BadRequest(ModelState);
+        }
+
+        try
+        {
+            _logger.LogInformation("Cancelling order with id: {Id}", orderDetailId);
+            var orderDetail = await _orderRepository.CancelProductOrderAsync(orderDetailId);
+            return Ok(orderDetail.ToOrderDetailsDto());
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.LogError("Error cancelling order with id: {Id}. Error: {Error}", orderDetailId, ex.Message);
+            return BadRequest(new { message = ex.Message });
+        }
+    }
+    }}
