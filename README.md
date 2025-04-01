@@ -3,7 +3,7 @@
 A multi-vendor eCommerce solution built with ASP.NET
 
 ### 🚀 Overview
-OloEcomm is a scalable eCommerce platform supporting multiple vendors, real-time order tracking, and secure payments.
+OloEcomm is a scalable eCommerce ASP .NET WebAPI supporting multiple vendors, real-time order tracking, and secure payments.
 
 ### ✨ Features
 -  🔐 JWT Authentication & Role-based Access (with automatic token refresh)
