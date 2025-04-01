@@ -331,3 +331,8 @@ C:/Users/DEJI/source/repos/OloEcomm/OloEcomm/bin/Debug/net8.0/PayStack.Net.dll
 /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Runtime.Caching.dll
 /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/bin/Debug/net8.0/runtimes/browser/lib/net8.0/System.Text.Encodings.Web.dll
 /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/obj/Debug/net8.0/OloEcomm.sourcelink.json
+/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/bin/Debug/net8.0/BouncyCastle.Cryptography.dll
+/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/bin/Debug/net8.0/MailKit.dll
+/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/bin/Debug/net8.0/MimeKit.dll
+/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/bin/Debug/net8.0/System.Security.Cryptography.Pkcs.dll
+/Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll

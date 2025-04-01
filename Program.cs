@@ -15,6 +15,7 @@ using Serilog;
 using Serilog.Sinks.MSSqlServer;
 using System.Collections.ObjectModel;
 using OloEcomm.Middlewares;
+using OloEcomm.Helpers;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,6 +26,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddMemoryCache();
 
 builder.Services.AddSwaggerGen(option =>
 {
@@ -66,6 +68,7 @@ builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPayStackService, PayStackService>();
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 
 
@@ -76,9 +79,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
-
-
 
 builder.Services.AddCors(options =>
 {
@@ -98,7 +98,9 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
     options.Password.RequiredLength = 8;
     options.User.RequireUniqueEmail = true;
 })
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders()
+    .AddTokenProvider<CustomTwoFactorTokenProvider<User>>("Custom2FA");
 
 
 builder.Services.AddAuthentication(options =>

@@ -1,0 +1,294 @@
+2025-03-29 21:40:03.428 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-29 21:40:03.462 +01:00 [INF] HTTP GET /apple-touch-icon-precomposed.png responded 401 in 37.7443 ms
+2025-03-29 21:40:03.468 +01:00 [INF] HTTP GET /apple-touch-icon.png responded 401 in 1.8542 ms
+2025-03-29 21:40:40.627 +01:00 [INF] HTTP POST /OloEcomm/Account/Register responded 400 in 94.9083 ms
+2025-03-29 21:41:43.822 +01:00 [INF] Creating new user: dapodrem@example.com
+2025-03-29 21:41:44.525 +01:00 [INF] User created successfully: dapodrem@example.com
+2025-03-29 21:41:44.525 +01:00 [INF] Assigning Vendor role to user: dapodrem@example.com
+2025-03-29 21:41:44.618 +01:00 [INF] Role assigned successfully: dapodrem@example.com
+2025-03-29 21:41:44.618 +01:00 [INF] Generating token for user: dapodrem@example.com
+2025-03-29 21:41:44.657 +01:00 [INF] HTTP POST /OloEcomm/Account/Register responded 200 in 862.5838 ms
+2025-03-29 21:42:22.892 +01:00 [INF] Fetching user: dapodrem@example.com
+2025-03-29 21:42:22.894 +01:00 [INF] HTTP GET /OloEcomm/Account/GetByUser responded 200 in 65.9605 ms
+2025-03-29 21:42:54.358 +01:00 [INF] Fetching all categories
+2025-03-29 21:42:54.428 +01:00 [INF] HTTP GET /OloEcomm/Category responded 200 in 76.1753 ms
+2025-03-29 21:43:12.366 +01:00 [INF] HTTP POST /OloEcomm/Category responded 403 in 3.4109 ms
+2025-03-29 21:44:17.737 +01:00 [INF] Creating product: Tecno Spark 202
+2025-03-29 21:44:17.801 +01:00 [INF] HTTP POST /OloEcomm/Product/1 responded 201 in 98.8653 ms
+2025-03-29 21:45:12.544 +01:00 [INF] Fetching all products
+2025-03-29 21:45:12.566 +01:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2025-03-29 21:45:12.612 +01:00 [INF] HTTP GET /OloEcomm/Product responded 200 in 76.1535 ms
+2025-03-29 21:47:07.603 +01:00 [INF] Fetching user: malikadedeji@example.com
+2025-03-29 21:47:07.610 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-29 21:47:07.659 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-29 21:47:07.677 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-29 21:47:07.682 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 95.0752 ms
+2025-03-29 21:48:06.202 +01:00 [INF] Product added to cart: 3002
+2025-03-29 21:48:06.202 +01:00 [INF] HTTP POST /OloEcomm/ShoppingCart/CreateMyCartItem/3002 responded 200 in 48.7990 ms
+2025-03-29 21:48:12.627 +01:00 [INF] Product added to cart: 2002
+2025-03-29 21:48:12.627 +01:00 [INF] HTTP POST /OloEcomm/ShoppingCart/CreateMyCartItem/2002 responded 200 in 19.7300 ms
+2025-03-29 21:48:18.600 +01:00 [INF] User carts retrieved: malikadedeji@example.com
+2025-03-29 21:48:18.601 +01:00 [INF] HTTP GET /OloEcomm/ShoppingCart/GetMyCarts responded 200 in 21.7930 ms
+2025-03-29 21:48:41.979 +01:00 [INF] Fetching address for user: malikadedeji@example.com
+2025-03-29 21:48:42.016 +01:00 [INF] HTTP GET /OloEcomm/Address/GetMyAddresses responded 200 in 40.5578 ms
+2025-03-29 21:49:21.971 +01:00 [INF] Creating order for user: malikadedeji@example.com
+2025-03-29 21:49:22.052 +01:00 [INF] HTTP POST /OloEcomm/Order responded 201 in 91.5260 ms
+2025-03-29 21:50:02.915 +01:00 [INF] Payment initialized for user: malikadedeji@example.com
+2025-03-29 21:50:02.918 +01:00 [INF] HTTP POST /OloEcomm/Payments/InitializePayment/2005 responded 200 in 1256.0566 ms
+2025-03-29 21:53:28.442 +01:00 [INF] Payment verified with reference: cc464a77-41f3-48c0-b3a1-abde8e444bd3
+2025-03-29 21:53:28.443 +01:00 [INF] HTTP GET /OloEcomm/Payments/Verify/cc464a77-41f3-48c0-b3a1-abde8e444bd3 responded 200 in 919.1862 ms
+2025-03-29 21:53:48.861 +01:00 [INF] Fetching order for user: malikadedeji@example.com
+2025-03-29 21:53:48.862 +01:00 [INF] HTTP GET /OloEcomm/Order/GetMyOrder responded 200 in 25.4603 ms
+2025-03-29 21:54:05.742 +01:00 [INF] HTTP POST /OloEcomm/Order/2005/ShipProductOrdered responded 403 in 0.7915 ms
+2025-03-29 21:54:54.964 +01:00 [INF] Fetching user: dapodrem@gmail.com
+2025-03-29 21:54:54.981 +01:00 [INF] Fetching user by email: dapodrem@gmail.com
+2025-03-29 21:54:54.984 +01:00 [WRN] User not found: dapodrem@gmail.com
+2025-03-29 21:54:54.984 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 404 in 21.4768 ms
+2025-03-29 21:55:10.035 +01:00 [INF] Fetching user: dapodrem@example.com
+2025-03-29 21:55:10.046 +01:00 [INF] Verifying user: dapodrem@example.com
+2025-03-29 21:55:10.091 +01:00 [WRN] Invalid credentials for user: dapodrem@example.com
+2025-03-29 21:55:10.091 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 401 in 57.0698 ms
+2025-03-29 21:55:19.063 +01:00 [INF] Fetching user: dapodrem@example.com
+2025-03-29 21:55:19.070 +01:00 [INF] Verifying user: dapodrem@example.com
+2025-03-29 21:55:19.114 +01:00 [INF] Generating token for user: dapodrem@example.com
+2025-03-29 21:55:19.127 +01:00 [INF] User logged in successfully: dapodrem@example.com
+2025-03-29 21:55:19.127 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 65.0586 ms
+2025-03-29 21:56:11.000 +01:00 [INF] Shipping order with id: 2002
+2025-03-29 21:56:11.019 +01:00 [ERR] Error shipping order with id: 2002. Error: Product Ordered  not found.
+2025-03-29 21:56:11.021 +01:00 [INF] HTTP POST /OloEcomm/Order/2002/ShipProductOrdered responded 400 in 26.4642 ms
+2025-03-29 21:56:28.350 +01:00 [INF] Shipping order with id: 2004
+2025-03-29 21:56:28.378 +01:00 [INF] HTTP POST /OloEcomm/Order/2004/ShipProductOrdered responded 200 in 30.1507 ms
+2025-03-29 21:58:05.991 +01:00 [INF] Delivering order with id: 2005
+2025-03-29 21:58:05.997 +01:00 [ERR] Error delivering order with id: 2005. Error: Product Ordered is not in shipped state. Cannot ship.
+2025-03-29 21:58:05.997 +01:00 [INF] HTTP POST /OloEcomm/Order/2005/DeliverProductOrdered responded 400 in 11.7508 ms
+2025-03-29 21:58:24.171 +01:00 [INF] Delivering order with id: 2004
+2025-03-29 21:58:24.185 +01:00 [INF] HTTP POST /OloEcomm/Order/2004/DeliverProductOrdered responded 200 in 14.8516 ms
+2025-03-29 21:59:29.036 +01:00 [INF] Fetching user: malikadedeji@example.com
+2025-03-29 21:59:29.042 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-29 21:59:29.083 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-29 21:59:29.093 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-29 21:59:29.093 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 58.1133 ms
+2025-03-29 22:00:39.818 +01:00 [INF] Creating review for product: 2002
+2025-03-29 22:00:39.863 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:00:39.877 +01:00 [ERR] HTTP POST /OloEcomm/Review/2002 responded 500 in 84.9955 ms
+2025-03-29 22:01:12.735 +01:00 [INF] Creating review for product: 3002
+2025-03-29 22:01:12.737 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:01:12.738 +01:00 [ERR] HTTP POST /OloEcomm/Review/3002 responded 500 in 16.5801 ms
+2025-03-29 22:01:18.315 +01:00 [INF] Creating review for product: 3002
+2025-03-29 22:01:18.317 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:01:18.318 +01:00 [ERR] HTTP POST /OloEcomm/Review/3002 responded 500 in 12.9731 ms
+2025-03-29 22:01:51.511 +01:00 [INF] Creating review for product: 2002
+2025-03-29 22:01:51.514 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:01:51.515 +01:00 [ERR] HTTP POST /OloEcomm/Review/2002 responded 500 in 14.0281 ms
+2025-03-29 22:03:12.240 +01:00 [INF] Creating review for product: 3002
+2025-03-29 22:03:12.245 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:03:12.247 +01:00 [ERR] HTTP POST /OloEcomm/Review/3002 responded 500 in 23.8908 ms
+2025-03-29 22:04:57.617 +01:00 [INF] Creating review for product: 2002
+2025-03-29 22:04:57.619 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:04:57.620 +01:00 [ERR] HTTP POST /OloEcomm/Review/2002 responded 500 in 13.6216 ms
+2025-03-29 22:09:45.127 +01:00 [INF] Creating review for product: 2002
+2025-03-29 22:09:45.131 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:09:45.132 +01:00 [ERR] HTTP POST /OloEcomm/Review/2002 responded 500 in 18.7782 ms
+2025-03-29 22:09:47.472 +01:00 [INF] Creating review for product: 2002
+2025-03-29 22:09:47.476 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:09:47.477 +01:00 [ERR] HTTP POST /OloEcomm/Review/2002 responded 500 in 13.1733 ms
+2025-03-29 22:10:34.996 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-29 22:10:35.102 +01:00 [INF] Fetching user: malikadedeji@example.com
+2025-03-29 22:10:35.678 +01:00 [INF] Verifying user: malikadedeji@example.com
+2025-03-29 22:10:35.714 +01:00 [INF] Generating token for user: malikadedeji@example.com
+2025-03-29 22:10:35.808 +01:00 [INF] User logged in successfully: malikadedeji@example.com
+2025-03-29 22:10:35.818 +01:00 [INF] HTTP POST /OloEcomm/Account/Login responded 200 in 824.9123 ms
+2025-03-29 22:11:09.129 +01:00 [INF] Creating review for product: 2002
+2025-03-29 22:11:09.188 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:11:09.197 +01:00 [ERR] HTTP POST /OloEcomm/Review/2002 responded 500 in 145.6152 ms
+2025-03-29 22:11:12.155 +01:00 [INF] Creating review for product: 2002
+2025-03-29 22:11:12.160 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:11:12.161 +01:00 [ERR] HTTP POST /OloEcomm/Review/2002 responded 500 in 25.0195 ms
+2025-03-29 22:11:12.816 +01:00 [INF] Creating review for product: 2002
+2025-03-29 22:11:12.819 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:11:12.820 +01:00 [ERR] HTTP POST /OloEcomm/Review/2002 responded 500 in 13.8875 ms
+2025-03-29 22:11:39.377 +01:00 [INF] Creating review for product: 3002
+2025-03-29 22:11:39.472 +01:00 [INF] HTTP POST /OloEcomm/Review/3002 responded 201 in 117.3929 ms
+2025-03-29 22:12:14.731 +01:00 [INF] Creating review for product: 2002
+2025-03-29 22:12:14.736 +01:00 [ERR] An unhandled exception occurred
+System.InvalidOperationException: You can only review a product after it has been delivered.
+   at OloEcomm.Repository.ReviewRepository.CreateReviewAsync(Review review, String username) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Repository/ReviewRepository.cs:line 28
+   at OloEcomm.Controllers.ReviewController.CreateReview(CreateReviewDto reviewDto, Int32 productId, Rating rating) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/ReviewController.cs:line 125
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-29 22:12:14.737 +01:00 [ERR] HTTP POST /OloEcomm/Review/2002 responded 500 in 16.3273 ms
