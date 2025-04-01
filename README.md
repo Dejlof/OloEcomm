@@ -11,12 +11,14 @@ OloEcomm is a scalable eCommerce ASP .NET WebAPI supporting multiple vendors, re
 - 📦 Order Tracking & Cart Management
 - 💳 Paystack Payment Integration
 - 📩 Email Notifications (SMTP support)
+- Logging
 
 ### 🛠️ Tech Stack
 - Backend (ASP.NET Web API)
 - .NET 8+
 - Entity Framework Core (SQL Server/PostgreSQL)
 - JWT Authentication (Refresh Tokens)
+- Serilog
 
 ### Database & DevOps
 - SQL Server / PostgreSQL
