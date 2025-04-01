@@ -1,0 +1,56 @@
+2025-03-30 10:36:01.775 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-30 10:36:01.919 +01:00 [INF] Creating new user: adebisiayodeji20@gmail.com
+2025-03-30 10:36:02.697 +01:00 [INF] User created successfully: adebisiayodeji20@gmail.com
+2025-03-30 10:36:02.697 +01:00 [INF] Assigning Vendor role to user: adebisiayodeji20@gmail.com
+2025-03-30 10:36:02.797 +01:00 [INF] Role assigned successfully: adebisiayodeji20@gmail.com
+2025-03-30 10:36:02.797 +01:00 [INF] Generating token for user: adebisiayodeji20@gmail.com
+2025-03-30 10:37:17.877 +01:00 [ERR] An error occurred: No route to host
+2025-03-30 10:37:17.885 +01:00 [ERR] HTTP POST /OloEcomm/Account/Register responded 500 in 76112.8711 ms
+2025-03-30 10:47:32.424 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-30 10:47:32.532 +01:00 [INF] Fetching user: adebisiayodeji20@gmail.com
+2025-03-30 10:47:33.080 +01:00 [INF] Verifying user: adebisiayodeji20@gmail.com
+2025-03-30 10:47:33.117 +01:00 [INF] Generating token for user: adebisiayodeji20@gmail.com
+2025-03-30 10:47:33.233 +01:00 [INF] User logged in successfully: adebisiayodeji20@gmail.com
+2025-03-30 10:47:34.393 +01:00 [ERR] An unhandled exception occurred
+MailKit.Net.Smtp.SmtpCommandException: Service not available
+   at MailKit.Net.Smtp.SmtpClient.PostConnectAsync(Stream stream, String host, Int32 port, SecureSocketOptions options, Boolean starttls, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.ConnectAsync(String host, Int32 port, SecureSocketOptions options, CancellationToken cancellationToken)
+   at OloEcomm.Services.EmailService.SendEmailAsync(String toEmail, String subject, String body) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Services/EmailService.cs:line 32
+   at OloEcomm.Controllers.AccountController.Login(LoginDto loginDto) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/AccountController.cs:line 246
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-30 10:47:34.425 +01:00 [ERR] HTTP POST /OloEcomm/Account/Login responded 500 in 2003.4934 ms
+2025-03-30 10:54:06.874 +01:00 [WRN] Failed to determine the https port for redirect.
+2025-03-30 10:54:06.982 +01:00 [INF] Fetching user: adebisiayodeji20@gmail.com
+2025-03-30 10:54:07.549 +01:00 [INF] Verifying user: adebisiayodeji20@gmail.com
+2025-03-30 10:54:07.585 +01:00 [INF] Generating token for user: adebisiayodeji20@gmail.com
+2025-03-30 10:54:07.681 +01:00 [INF] User logged in successfully: adebisiayodeji20@gmail.com
+2025-03-30 10:54:07.818 +01:00 [ERR] An unhandled exception occurred
+MailKit.Net.Smtp.SmtpCommandException: Service not available
+   at MailKit.Net.Smtp.SmtpClient.PostConnectAsync(Stream stream, String host, Int32 port, SecureSocketOptions options, Boolean starttls, CancellationToken cancellationToken)
+   at MailKit.Net.Smtp.SmtpClient.ConnectAsync(String host, Int32 port, SecureSocketOptions options, CancellationToken cancellationToken)
+   at OloEcomm.Services.EmailService.SendEmailAsync(String toEmail, String subject, String body) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Services/EmailService.cs:line 32
+   at OloEcomm.Controllers.AccountController.Login(LoginDto loginDto) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Controllers/AccountController.cs:line 246
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at OloEcomm.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in /Users/mac/Documents/SOFTWARE PROJECT/OloEcomm/Middlewares/ExceptionMiddleware.cs:line 18
+2025-03-30 10:54:07.835 +01:00 [ERR] HTTP POST /OloEcomm/Account/Login responded 500 in 964.7769 ms

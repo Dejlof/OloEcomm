@@ -23,13 +23,16 @@ namespace OloEcomm.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly ILogger<AccountController> _logger;
-        private readonly ApplicationDbContext   _context;
-        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, ITokenService tokenService, ILogger<AccountController> logger)
+        private readonly IEmailService _emailService;
+    
+        public AccountController(SignInManager<User> signInManager, UserManager<User> userManager, 
+        ITokenService tokenService, ILogger<AccountController> logger, IEmailService emailService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _tokenService = tokenService;
             _logger = logger;
+            _emailService = emailService;
         }
 
         [HttpGet("Get-all-users")]
@@ -115,6 +118,8 @@ namespace OloEcomm.Controllers
                     {
                         _logger.LogInformation("Role assigned successfully: {User}", user);
                         _logger.LogInformation("Generating token for user: {User}", user);
+                        await _emailService.SendEmailAsync(registerDto.Email, "Welcome to Oloja MarketPlace", 
+                        "<h2>Thank you for signing up!</h2><p>We appreciate your business.</p>");
                     
                         return Ok(
                             new NewUserDto
@@ -126,6 +131,8 @@ namespace OloEcomm.Controllers
                             RefreshToken = refreshToken,
                             RefreshTokenExpiryTime = expiryTime,
                         });
+
+                    
                     }
                     else
                     {
@@ -236,6 +243,8 @@ namespace OloEcomm.Controllers
             await _userManager.UpdateAsync(user);
 
             _logger.LogInformation("User logged in successfully: {User}", user);
+           // await _emailService.SendEmailAsync(user.Email, "A New Login From You", 
+                     // "<h2>You Just Logged In</h2><p> If this is not you. Kindly change your passsword</p>");
 
             return Ok(new 
             {
@@ -391,6 +400,107 @@ namespace OloEcomm.Controllers
             return Ok($"{deletedUser} has been deleted");
 
         }
+
+       [HttpPost("ForgotPassword")]
+       [AllowAnonymous]
+        public async Task<IActionResult> ForgotPassword ( string email){
+              if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("Invalid model state for Forgot Password model.");    
+                string errorMessage = string.Join("|",
+                    ModelState.Values.SelectMany(x => x.Errors).Select(
+                        e => e.ErrorMessage));
+                throw new ArgumentException(errorMessage);
+            }
+
+            var appUser = await _userManager.FindByEmailAsync(email);
+
+              if (appUser == null)
+              {
+                 return BadRequest("User not found");
+              }
+
+              var token = await _userManager.GenerateUserTokenAsync(appUser, "Custom2FA", "PasswordReset");
+
+          await _emailService.SendEmailAsync(appUser.Email, "Password Reset Token", $"<p>Password reset token for {appUser.Email}: {token}<p/>");
+                  _logger.LogInformation($"Password reset token for {appUser.Email}: {token}");
+
+                  return Ok($"Password reset email for {appUser.Email} sent successfully.");
+        }
+
+
+        [HttpPost("ResetPassword")]
+        [AllowAnonymous]
+     public async Task<IActionResult> ResetPassword (ResetPasswordDto resetPassword)
+    {
+       if (!ModelState.IsValid)
+    {
+        _logger.LogWarning("Invalid model state for Reset Password model.");    
+        string errorMessage = string.Join("|",
+            ModelState.Values.SelectMany(x => x.Errors).Select(
+                e => e.ErrorMessage));
+        return BadRequest(errorMessage);
+    }
+
+    var appUser = await _userManager.FindByNameAsync(resetPassword.Email);
+
+      if (appUser == null)
+      {
+          _logger.LogWarning("User not found: {User}", resetPassword.Email);
+         return BadRequest("User not found");
+      }
+
+      var isValid = await _userManager.VerifyUserTokenAsync(appUser, "Custom2FA", "PasswordReset", resetPassword.Token);
+      if (!isValid) return BadRequest("Invalid or expired token.");
+      
+      
+         _logger.LogInformation("Password Reset successfully: {User}", appUser.Email);
+           appUser.PasswordHash = _userManager.PasswordHasher.HashPassword(appUser, resetPassword.NewPassword);
+
+           await _userManager.UpdateAsync(appUser);
+      
+
+       await _emailService.SendEmailAsync(appUser.Email,"Pasword Reset Sucessfully", "<p> Your Password Has been Reset Sucessfully" );
+       return Ok ("Password Reset Sucessfully for User");
+}
+
+          [HttpPost("ChangePassword")]
+           public async Task <IActionResult> ChangePassword (ChangePasswordDto changePassword)
+           {
+        if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("Invalid model state for Change Password model.");    
+                string errorMessage = string.Join("|",
+                    ModelState.Values.SelectMany(x => x.Errors).Select(
+                        e => e.ErrorMessage));
+                throw new ArgumentException(errorMessage);
+            }
+             
+            var user = User.GetUsername();
+            
+            var appUser = await _userManager.FindByNameAsync(user);
+            if (appUser == null)
+            {
+            _logger.LogWarning("User not found: {User}", appUser.Email);
+              return BadRequest("User not found");
+            }
+             var result = await _userManager.ChangePasswordAsync(appUser, changePassword.CurrentPassword, changePassword.NewPassword);
+    if (!result.Succeeded)
+    {
+        _logger.LogWarning("Failed to change password for user: {User}", appUser.Email);
+        return BadRequest(result.Errors.Select(e => e.Description));
+    }
+
+        await _signInManager.SignOutAsync();
+         _logger.LogInformation("Password changed successfully, user signed out: {User}", appUser.Email);
+
+          await _emailService.SendEmailAsync(appUser.Email,"Pasword Changed Sucessfully", "<p> Your Password Has been Changed Sucessfully" );
+
+         _logger.LogInformation("Password changed successfully for user: {User}", appUser.Email);
+             return Ok($"Password changed successfully for {appUser.Email}");
+         
+           }
+
 
         [HttpPost("SwitchRoles")]
         public async Task<IActionResult> SwitchRoles([FromQuery] Role role)
